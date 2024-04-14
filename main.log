@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.15)  14 APR 2024 20:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.15)  14 APR 2024 21:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1023,28 +1023,28 @@ Package hyperref Info: Link coloring ON on input line 6.
 
 Package hyperref Info: bookmark level for unknown notation defaults to 0 on inp
 ut line 10.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 15.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 21.
 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-Package hyperref Info: bookmark level for unknown since defaults to 0 on input 
-line 21.
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 24.
+nput line 40.
  [1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texl
 ive/texdir/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 63.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-8.
+t line 94.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
+9.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 Package hyperref Info: bookmark level for unknown claim defaults to 0 on input 
-line 68.
+line 99.
+Package hyperref Info: bookmark level for unknown since defaults to 0 on input 
+line 102.
  (./main.bbl) [2]
 (./main.aux)
  ***********
@@ -1055,35 +1055,39 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EDE23595DCA8A4392503813D74F4CD13;94.
  ) 
 Here is how much of TeX's memory you used:
- 29748 strings out of 474104
- 561606 string characters out of 5745485
- 1950493 words of memory out of 5000000
- 51380 multiletter control sequences out of 15000+600000
+ 29867 strings out of 474104
+ 564396 string characters out of 5745485
+ 1967493 words of memory out of 5000000
+ 51498 multiletter control sequences out of 15000+600000
  582088 words of font info for 120 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 131i,17n,141p,508b,1227s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 131i,17n,141p,508b,1228s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></o
 pt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/te
 xlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/texlive/
 texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/texlive/texdir
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></opt/texlive/texdir/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/texlive/texdir/texmf-dis
-t/fonts/type1/public/amsfonts/euler/eufm10.pfb></opt/texlive/texdir/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msam10.pfb></opt/texlive/texdir/texmf-dist/
-fonts/type1/public/cm-super/sfbi1095.pfb></opt/texlive/texdir/texmf-dist/fonts/
-type1/public/cm-super/sfbx1095.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/
-public/cm-super/sfcc0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public
-/cm-super/sfcc1095.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-su
-per/sfrm0800.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sf
-rm0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm1095
-.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><
-/opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></opt/t
-exlive/texdir/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></opt/texlive
-/texdir/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (2 pages, 283813 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></opt/texlive/texdir/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/texlive/texdir/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss10.pfb></opt/texlive/texdir/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmss8.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public
+/amsfonts/euler/eufm10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msam10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/c
+m-super/sfbi1095.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-supe
+r/sfbx1095.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfcc
+0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfcc1095.p
+fb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></o
+pt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></opt/tex
+live/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></opt/texlive/t
+exdir/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></opt/texlive/texdir/
+texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></opt/texlive/texdir/texmf-
+dist/fonts/type1/public/cm-super/sftt0900.pfb></opt/texlive/texdir/texmf-dist/f
+onts/type1/public/cm-super/sftt1095.pfb>
+Output written on main.pdf (2 pages, 318169 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 18 named destinations out of 1000 (max. 500000)
+ 163 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
