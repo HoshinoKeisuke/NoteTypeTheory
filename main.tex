@@ -4,28 +4,59 @@
 \vspace{10ex}
 
 \begin{document}
-\maketitle 
+\maketitle
 \cite{Cis19}
 \begin{notation}
 	We employ the following notations.
 	\begin{itemize}
 		\item %
-			We write $\Set$ for the category of small sets.
+			Possibly large (2,1)-categories are denoted by bf symbols:
+			$\C,\one{A},\one{E},\ldots$
 		\item %
-			We write $\Cat$ for the 2-category of categories.
+			Small categories are denoted by bb symbols:
+			$\dgm{I},\dgm{D},\dgm{A},\ldots$
+		\item %
+			$\Set$ is the category of small sets.
+		\item %
+			$\Catbi$ is the 2-category of small categories.
+		\item %
+			$\Cat$ is the (2,1)-category of small categories.
+		\item %
+			$\ra$ is the $1$-simplex seen as a category.
+			$\C^\ra$ is the arrow category of $\C$.
+		\item %
+			$\C_{/A}$ and $\C_{A/}$ are over and under categories respectively.
+		\item %
+			$\cod$ and $\dom$ means codomain and domain respectively. They often have as their type
+			$\C^\ra\arr\C$, $\C_{/A}\arr\C$,
+			or $\C_{A/}\arr\C$.
+		\item %
+			By a \emph{replete class of morphisms} of $\C$, we mean a replete subcategory of $\C^\ra$ that is a groupoid.
 		\item %
 		\qedhere %
 	\end{itemize}
 \end{notation}
-\begin{since}
-	test
-\end{since}
 \begin{definition}
-	A \emph{clan} $\C=(\C,\Fib)$ is a pair of a category $\C$ and a class $\Fib$ of morphisms satisfying the following conditions.
+	\[
+		\begin{tikzcd}
+			\StrCat
+			\ar[r]
+			\ar[d]
+				&
+				\Cat^\ra
+				\ar[d,"\cod"]
+			\\
+			\Set
+			\ar[r]
+				&
+				\Cat
+		\end{tikzcd}
+	\]
+\end{definition}
+\begin{definition}
+	A \emph{clan} $\C=(\C,\Fib)$ is a pair of a category $\C$ and a replete class $\Fib$ of morphisms satisfying the following conditions.
 	Arrows in $\Fib$ are called \emph{fibrations} of $\C$.
 	\begin{itemize}
-		\item %
-			$\Fib$ contains all isomorphisms.
 		\item %
 			$\C$ has a terminal object.
 		\item %
