@@ -19,6 +19,7 @@ esint,%
 stmaryrd,%
 array,%
 pict2e,
+listings, % for listings
 }
 \RequirePackage[nolist,smaller]{acronym}
 \RequirePackage[a4paper, margin=2cm]{%
@@ -92,14 +93,40 @@ decorations.markings,% to define the key vslash
 \crefname{enumi}{\!}{Items\!}
 \Crefname{enumi}{\!}{Items\!}
 %theoremstyles
+\newtheoremstyle{since}% name
+  {1pt}%      Space above
+  {3pt}%      Space below
+  {\addtolength{\leftskip}{.5em}}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {}% Thm head font \itshape for italic, bfshape for bf
+  {}%        Punctuation after thm head (usually .)
+  {.5em}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
 
-\declaretheorem[style=plain,numbered=no,name=Theorem]{theorem*}
-%\declaretheorem[style=plain,name=Theorem]{theorem}
-\declaretheorem[style=plain,numberwithin=section,name=Theorem]{theorem}
-\declaretheorem[style=plain,sibling=theorem,name=Lemma]{lemma}
-\declaretheorem[style=plain,sibling=theorem,name=Proposition]{proposition}
-\declaretheorem[style=plain,sibling=theorem,name=Corollary]{corollary}
-\declaretheorem[style=plain,sibling=theorem,name=Fact]{fact}
+\newtheoremstyle{claim}% name
+  {3pt}%      Space above, empty = `usual value'
+  {1pt}%      Space below
+  {\addtolength{\leftskip}{.5em}}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\ttfamily}%         Thm head font \bfseries nado
+  {.}%        Punctuation after thm head
+  {.5em}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+
+\newcommand*{\noqed}{\let\qed\relax}
+
+\declaretheorem[style=definition,qed=$\blacklozenge$,numbered=no,name=Theorem]{theorem*}
+%\declaretheorem[style=definition,name=Theorem]{theorem}
+\declaretheorem[style=definition,qed=$\blacklozenge$,numberwithin=section,name=Theorem]{theorem}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Lemma]{lemma}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Proposition]{proposition}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Corollary]{corollary}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Fact]{fact}
+
+\declaretheorem[style=since,numbered=no,qed=$\lozenge$,name=$\because$]{since}
+\declaretheorem[style=claim,name=\,\underline{Claim},numbered=no]{claim}
 
 \declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Definition]{definition}
 \declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Conjecture]{conjecture}
@@ -107,6 +134,7 @@ decorations.markings,% to define the key vslash
 \declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Remark]{remark}
 \declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Notation]{notation}
 \declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Observation]{observation}
+
 
 \crefname{theorem}{Theorem\!}{Theorems\!}
 \Crefname{theorem}{Theorem\!}{Theorems\!}
@@ -286,9 +314,9 @@ decorations.markings,% to define the key vslash
 \newcommand*{\dgm}[1]{\mathbb{#1}}
 \newcommand*{\zero}[1]{\mathsf{#1}}
 \newcommand*{\one}[1]{\mathbf{#1}}
-\newcommand*{\bi}[1]{{\mathcal{#1}}}
-\newcommand*{\dbl}[1]{\mathbb{#1}}
-\newcommand*{\trpl}[1]{\mathfrak{#1}}
+\newcommand*{\bi}[1]{{\mathfrak{#1}}}
+%\newcommand*{\dbl}[1]{\mathbb{#1}}
+%\newcommand*{\trpl}[1]{\mathfrak{#1}}
 
 \newcommand*{\boundary}{\partial}
 
@@ -310,4 +338,5 @@ decorations.markings,% to define the key vslash
 %----- abbreviations (additional) -----------------------------------------------
 \newcommand*{\Fib}{\zero{Fib}}
 \newcommand*{\C}{\one{C}}
+\newcommand*{\Cat}{\Catbi}
 \endinput
