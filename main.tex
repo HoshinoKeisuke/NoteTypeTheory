@@ -6,7 +6,41 @@
 \maketitle 
 \cite{Cis19}
 \begin{definition}
-	A \emph{clan} $(\C,\Fib)$
+	A \emph{clan} $\C=(\C,\Fib)$ is a pair of a category $\C$ and a class $\Fib$ of morphisms satisfying the following conditions.
+	Arrows in $\Fib$ are called \emph{fibrations} of $\C$.
+	\begin{itemize}
+		\item %
+			$\Fib$ contains all isomorphisms.
+		\item %
+			$\C$ has a terminal object.
+		\item %
+			Let $h\colon A\arr B$ and $f\colon X\arr[fib] B$ be morphisms in $\C$ such that $f$ is a fibration.
+			Then there is a pullback square
+			\[
+				\begin{tikzcd}
+					\cdot
+					\ar[r]
+					\ar[d,fib]
+					\pullback[rd]
+						&
+						X
+						\ar[d,"f",fib]
+					\\
+					A
+					\ar[r,"h"']
+						&
+						B
+				\end{tikzcd}
+			\]
+			in $\C$
+			such that the left side is also a fibration.
+		\item %
+			For each object $A\in\C$, the unique morphism $A\arr 1$ towards the terminal object
+			is a fibraion.
+		\item %
+			$\Fib$ is closed under composition.
+		\qedhere %
+	\end{itemize}
 \end{definition}
 
 \bibliographystyle{halpha-abbrv}
