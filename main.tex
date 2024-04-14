@@ -1,10 +1,25 @@
 \documentclass[a4paper,dvipsnames, 11pt]{amsart}
 \usepackage{preamble}
+\usepackage{lipsum}
 \vspace{10ex}
 
 \begin{document}
 \maketitle 
 \cite{Cis19}
+\begin{notation}
+	We employ the following notations.
+	\begin{itemize}
+		\item %
+			We write $\Set$ for the category of small sets.
+		\item %
+			We write $\Cat$ for the 2-category of categories.
+		\item %
+		\qedhere %
+	\end{itemize}
+\end{notation}
+\begin{since}
+	test
+\end{since}
 \begin{definition}
 	A \emph{clan} $\C=(\C,\Fib)$ is a pair of a category $\C$ and a class $\Fib$ of morphisms satisfying the following conditions.
 	Arrows in $\Fib$ are called \emph{fibrations} of $\C$.
@@ -42,6 +57,35 @@
 		\qedhere %
 	\end{itemize}
 \end{definition}
+\newpage
+
+\begin{theorem}
+	shoumei no aidani claim ireru yatu
+\end{theorem}
+\begin{proof}
+	\lipsum[1]
+	\begin{claim}
+		nannka claim siro
+	\end{claim}
+	\begin{since}
+		\lipsum[2]
+	\end{since}
+	\lipsum[3]
+\end{proof}
+\begin{theorem}
+	Saigo ni claim kuru taipu.
+\end{theorem}
+\begin{proof}
+	\lipsum[1]
+	This follows from the following Claim, which completes the proof.
+	\qedhere
+	\begin{claim}
+		nannka claim siro
+	\end{claim}
+	\begin{since}
+		\lipsum[2]
+	\end{since}
+\end{proof}
 
 \bibliographystyle{halpha-abbrv}
 \bibliography{bibliography}
