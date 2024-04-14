@@ -27,3 +27,5 @@ jobs:
           git add --all
           git commit -m "LaTeX compilation"
           git push --force origin pdf
+
+# In the repository, go Setting/Actions/General/Workflow permissions and set to "read and write perission"
