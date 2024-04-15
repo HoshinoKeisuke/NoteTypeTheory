@@ -277,6 +277,11 @@ decorations.markings,% to define the key vslash
         \hspace{-2ex}\ar[r,vslash,"{#1}",#2] \& \hspace{-2ex}
     \end{tikzcd}
 }}
+\NewDocumentCommand{\adjunction}{D(){\perp} O{1} m m m m }{
+    \begin{tikzcd}[column sep={#2em},ampersand replacement=\&]
+        {#3}\ar[rr,"{#5}",shift left=5pt,bend left=10] \& {#1} \& {#4}\ar[ll,"{#6}",shift left=5pt,bend left=10]
+    \end{tikzcd}
+}
 
 
 \newcommand*{\Set}{\one{Set}}
@@ -338,7 +343,10 @@ decorations.markings,% to define the key vslash
 \newcommand*{\rep}{\one{rep}}
 \newcommand*{\dis}{\one{dis}}
 \newcommand*{\fib}{\one{fib}}
-\newcommand*{\CwD}{\bi{C}\!w\!\bi{D}}
+\newcommand*{\CwC}{\one{CwC}}
+\newcommand*{\CwD}{\bi{C}w\bi{D}}
+\newcommand*{\CwDdm}{\one{CwD}^{\mathtt{dm}}}
+\newcommand*{\Clan}{\one{Clan}}
 \newcommand*{\C}{\one{C}}
 \newcommand*{\R}{\one{R}}
 \newcommand*{\Cat}{\Catone}
@@ -350,4 +358,5 @@ decorations.markings,% to define the key vslash
 \newcommand*{\WSubone}{\one{WSub}}
 \newcommand*{\emptycon}{\langle\rangle}
 \newcommand*{\dN}{\mathbb{N}}
+\newcommand*{\ctx}{\mathsf{ctx}}
 \endinput
