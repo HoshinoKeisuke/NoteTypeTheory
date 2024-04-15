@@ -50,7 +50,8 @@
 		\item %
 			Let $h\colon \Delta\arr \Gamma$ and $f\colon A\arr[fib] \Gamma$ be morphisms in $\C$ such that $f$ is a display map.
 			Then there is a pullback square
-			\[
+			\begin{equation}
+				\label{dgm:substPullback}
 				\begin{tikzcd}
 					\cdot
 					\ar[r]
@@ -65,16 +66,34 @@
 						&
 						\Gamma
 				\end{tikzcd}
-			\]
+			\end{equation}
 			in $\C$
 			such that the left side is also a display map.
 		\qedhere %
 	\end{itemize}
 \end{definition}
 \begin{definition}
+	Define the 2-category $\CwD$ of display map categories
+	as follows.
+	\begin{itemize}
+		\item %
+			0-cells are display map categories.
+		\item %
+			1-cells are functors preserving display maps and pullbacks of the form \Cref{dgm:substPullback}.
+		\item %
+			A 2-cell $\alpha\colon F\arr[Rightarrow]G$ is a natural transformation such that
+			naturality squares at display maps are pullback squares.
+		\qedhere %
+	\end{itemize}
+\end{definition}
+\begin{definition}
 	A display map category is \emph{democratic} if for each object $\Gamma\in\one{C}$,
 	there exists a sequence of display maps from $\Gamma$ to the terminal object.
+	We write $\CwDdm$ for the full sub 2-category of $\CwD$ spanned by democratic display map categories.
 \end{definition}
+\begin{proposition}
+	$\CwDdm$ is a (2,1)-category.
+\end{proposition}
 \begin{definition}
 	A \emph{clan} $\C=(\C,\fib_\C)$ is a display map category satisfying the following conditions.
 	Display maps (i.e., arrows in $\fib_\C$) are called \emph{fibrations} of $\C$.
@@ -86,6 +105,7 @@
 			$\fib_\C$ is closed under composition.
 		\qedhere %
 	\end{itemize}
+	We write $\Clan$ for the full sub 2-category of $\CwD$ spanned by clans. Since clans are always democratic, this is a (2,1)-category.
 \end{definition}
 \begin{definition}
 	A \emph{strict category} is a category equipped with its wide subcategory that is a set.
@@ -134,14 +154,24 @@
 					\]
 					is a monomorphism and
 					$\ell^{-1}(n+1)$ coincides with its image.
-				\qedhere
 			\end{itemize}
 	\end{itemize}
+	We write $\CwC$ for the category of contextual categories and functors preserving those structures.
 \end{definition}
+\begin{theorem}
+	There exists an 2-adjunction
+	\[
+		\adjunction{\CwC}{\CwD}{\abs{-}}{\ctx}
+	\]
+	that restricts to a biequivalence
+	\[
+		\adjunction(\simeq){\CwC}{\CwDdm}{\abs{-}}{\ctx}
+	\]
+\end{theorem}
 \section{Uemura's logical framework}
 \begin{definition}
-	A \emph{representable map category} $\R=(\R,\rep_\C)$ is a display map category satisfying the following conditions.
-	Display maps (i.e., arrows in $\rep_\C$) are called \emph{representable maps} of $\R$.
+	A \emph{representable map category} $\R=(\R,\rep_\R)$ is a display map category satisfying the following conditions.
+	Display maps (i.e., arrows in $\rep_\R$) are called \emph{representable maps} of $\R$.
 	\begin{itemize}
 		\item %
 			$\R$ is finitely complete.
