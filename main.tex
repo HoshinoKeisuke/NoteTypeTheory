@@ -32,7 +32,7 @@
 			$\C^\ra\arr\C$, $\C_{/A}\arr\C$,
 			or $\C_{A/}\arr\C$.
 		\item %
-			By a \emph{replete class of morphisms} of $\C$, we mean a replete fullsubcategory of $\C^\ra$.
+			By a \emph{replete class of morphisms} of $\C$, we mean a replete full subcategory of $\C^\ra$.
 		\item %
 			$\WSubone$ is the replete full sub (2,1)-category of $\Cat^\ra$
 			consisting of wide subcategory inclusions; i.e., faithful functors that induce equivalences on core groupoids.
@@ -40,14 +40,15 @@
 		\qedhere %
 	\end{itemize}
 \end{notation}
+\section{Dependent type theories in terms of display maps}
 \begin{definition}
-	A \emph{display map category} $\C=(\C,\Dis)$ is a pair of a category $\C$ and a replete class $\Dis$ of morphisms satisfying the following conditions.
-	Arrows in $\Dis$ are called \emph{display maps} of $\C$.
+	A \emph{display map category} $\C=(\C,\dis_\C)$ is a pair of a category $\C$ and a replete class $\dis_\C$ of morphisms satisfying the following conditions.
+	Arrows in $\dis_\C$ are called \emph{display maps} of $\C$.
 	\begin{itemize}
 		\item %
 			$\C$ has a terminal object.
 		\item %
-			Let $h\colon A\arr B$ and $f\colon X\arr[fib] B$ be morphisms in $\C$ such that $f$ is a display map.
+			Let $h\colon \Delta\arr \Gamma$ and $f\colon A\arr[fib] \Gamma$ be morphisms in $\C$ such that $f$ is a display map.
 			Then there is a pullback square
 			\[
 				\begin{tikzcd}
@@ -56,13 +57,13 @@
 					\ar[d,fib]
 					\pullback[rd]
 						&
-						X
+						A
 						\ar[d,"f",fib]
 					\\
-					A
+					\Delta
 					\ar[r,"h"']
 						&
-						B
+						\Gamma
 				\end{tikzcd}
 			\]
 			in $\C$
@@ -71,26 +72,18 @@
 	\end{itemize}
 \end{definition}
 \begin{definition}
-	A \emph{clan} $\C=(\C,\Fib)$ is a display map category satisfying the following conditions.
-	Display maps (i.e., arrows in $\Fib$) are called \emph{fibrations} of $\C$.
+	A display map category is \emph{democratic} if for each object $\Gamma\in\one{C}$,
+	there exists a sequence of display maps from $\Gamma$ to the terminal object.
+\end{definition}
+\begin{definition}
+	A \emph{clan} $\C=(\C,\fib_\C)$ is a display map category satisfying the following conditions.
+	Display maps (i.e., arrows in $\fib_\C$) are called \emph{fibrations} of $\C$.
 	\begin{itemize}
 		\item %
 			For each object $A\in\C$, the unique morphism $A\arr 1$ towards the terminal object
 			is a fibraion.
 		\item %
-			$\Fib$ is closed under composition.
-		\qedhere %
-	\end{itemize}
-\end{definition}
-\begin{definition}
-	A \emph{representable map category} $\R=(\R,\Rep)$ is a display map category satisfying the following conditions.
-	Display maps (i.e., arrows in $\Rep$) are called \emph{representable maps} of $\R$.
-	\begin{itemize}
-		\item %
-			$\R$ is finitely complete.
-		\item %
-			For each representable map $f\colon X\arr[fib]Y$,
-			the pullback functor $f^*\colon\R_{/Y}\arr\R_{/X}$ has a right adjoint $f_*$.
+			$\fib_\C$ is closed under composition.
 		\qedhere %
 	\end{itemize}
 \end{definition}
@@ -121,12 +114,12 @@
 	In particular, $\StrCat$ is a category.
 \end{definition}
 \begin{definition}
-	A \emph{contextual category} $\C=(\C,\Dis,\emptycon,\ell)$ consists of the following data.
+	A \emph{contextual category} $\C=(\C,\dis_\C,\emptycon,\ell)$ consists of the following data.
 	\begin{itemize}
 		\item %
 			A strict category $\C$.
 		\item %
-			A structure $\Dis$ of a display map category for the underlying category of $\C$.
+			A structure $\dis_\C$ of a display map category for the underlying category of $\C$.
 		\item %
 			An object $\emptycon$ of $\C$ which is a terminal object in the underlying category of $\C$.
 		\item %
@@ -141,7 +134,21 @@
 					\]
 					is a monomorphism and
 					$\ell^{-1}(n+1)$ coincides with its image.
+				\qedhere
 			\end{itemize}
+	\end{itemize}
+\end{definition}
+\section{Uemura's logical framework}
+\begin{definition}
+	A \emph{representable map category} $\R=(\R,\rep_\C)$ is a display map category satisfying the following conditions.
+	Display maps (i.e., arrows in $\rep_\C$) are called \emph{representable maps} of $\R$.
+	\begin{itemize}
+		\item %
+			$\R$ is finitely complete.
+		\item %
+			For each representable map $f\colon X\arr[fib]Y$,
+			the pullback functor $f^*\colon\R_{/Y}\arr\R_{/X}$ has a right adjoint $f_*$.
+		\qedhere %
 	\end{itemize}
 \end{definition}
 \newpage
