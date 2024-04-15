@@ -10,57 +10,44 @@
 	We employ the following notations.
 	\begin{itemize}
 		\item %
-			Possibly large (2,1)-categories are denoted by bf symbols:
+			(2,1)-categories are denoted by bf symbols:
 			$\C,\one{A},\one{E},\ldots$
-		\item %
-			Small categories are denoted by bb symbols:
+			or bb symbols:
 			$\dgm{I},\dgm{D},\dgm{A},\ldots$
 		\item %
-			$\Set$ is the category of small sets.
+			$\Set$ is the category of sets.
 		\item %
-			$\Catbi$ is the 2-category of small categories.
+			$\Cat$ is the large (2,1)-category of categories.
 		\item %
-			$\Cat$ is the (2,1)-category of small categories.
+			There is a fully faithful (2,1)-functor $\disc\colon\Set\arr[hook]\Cat$.
+		\item %
+			$\Catbi$ is the large 2-category of categories.
 		\item %
 			$\ra$ is the $1$-simplex seen as a category.
 			$\C^\ra$ is the arrow category of $\C$.
 		\item %
 			$\C_{/A}$ and $\C_{A/}$ are over and under categories respectively.
 		\item %
-			$\cod$ and $\dom$ means codomain and domain respectively. They often have as their type
+			$\cod$ and $\dom$ mean codomain and domain respectively. They often have as their type
 			$\C^\ra\arr\C$, $\C_{/A}\arr\C$,
 			or $\C_{A/}\arr\C$.
 		\item %
-			By a \emph{replete class of morphisms} of $\C$, we mean a replete subcategory of $\C^\ra$ that is a groupoid.
+			By a \emph{replete class of morphisms} of $\C$, we mean a replete fullsubcategory of $\C^\ra$.
+		\item %
+			$\WSubone$ is the replete full sub (2,1)-category of $\Cat^\ra$
+			consisting of wide subcategory inclusions; i.e., faithful functors that induce equivalences on core groupoids.
 		\item %
 		\qedhere %
 	\end{itemize}
 \end{notation}
 \begin{definition}
-	\[
-		\begin{tikzcd}
-			\StrCat
-			\ar[r]
-			\ar[d]
-				&
-				\Cat^\ra
-				\ar[d,"\cod"]
-			\\
-			\Set
-			\ar[r]
-				&
-				\Cat
-		\end{tikzcd}
-	\]
-\end{definition}
-\begin{definition}
-	A \emph{clan} $\C=(\C,\Fib)$ is a pair of a category $\C$ and a replete class $\Fib$ of morphisms satisfying the following conditions.
-	Arrows in $\Fib$ are called \emph{fibrations} of $\C$.
+	A \emph{display map category} $\C=(\C,\Dis)$ is a pair of a category $\C$ and a replete class $\Dis$ of morphisms satisfying the following conditions.
+	Arrows in $\Dis$ are called \emph{display maps} of $\C$.
 	\begin{itemize}
 		\item %
 			$\C$ has a terminal object.
 		\item %
-			Let $h\colon A\arr B$ and $f\colon X\arr[fib] B$ be morphisms in $\C$ such that $f$ is a fibration.
+			Let $h\colon A\arr B$ and $f\colon X\arr[fib] B$ be morphisms in $\C$ such that $f$ is a display map.
 			Then there is a pullback square
 			\[
 				\begin{tikzcd}
@@ -79,13 +66,74 @@
 				\end{tikzcd}
 			\]
 			in $\C$
-			such that the left side is also a fibration.
+			such that the left side is also a display map.
+		\qedhere %
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	A \emph{clan} $\C=(\C,\Fib)$ is a display map category satisfying the following conditions.
+	Display maps (i.e., arrows in $\Fib$) are called \emph{fibrations} of $\C$.
+	\begin{itemize}
 		\item %
 			For each object $A\in\C$, the unique morphism $A\arr 1$ towards the terminal object
 			is a fibraion.
 		\item %
 			$\Fib$ is closed under composition.
 		\qedhere %
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	A \emph{representable map category} $\R=(\R,\Rep)$ is a display map category satisfying the following conditions.
+	Display maps (i.e., arrows in $\Rep$) are called \emph{representable maps} of $\R$.
+	\begin{itemize}
+		\item %
+			$\R$ is finitely complete.
+		\item %
+			For each representable map $f\colon X\arr[fib]Y$,
+			the pullback functor $f^*\colon\R_{/Y}\arr\R_{/X}$ has a right adjoint $f_*$.
+		\qedhere %
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	A \emph{strict category} is a category equipped with its wide subcategory that is a set.
+	In other words, the (2,1)-category $\StrCat$ of strict categories is defined by the following pullback square.
+	\[
+		\begin{tikzcd}
+			\StrCat
+			\ar[r]
+			\ar[dd,"\Obj"']
+			\pullback[rd]
+				&
+				\WSubone
+				\ar[d,hook]
+			\\
+				&
+				\Cat^\ra
+				\ar[d,"\dom"]
+			\\
+			\Set
+			\ar[r,"\disc"']
+				&
+				\Cat
+		\end{tikzcd}
+	\]
+	The functor on the left is locally fully faithful and surjective on objects.
+	In particular, $\StrCat$ is a category.
+\end{definition}
+\begin{definition}
+	A \emph{contextual category} $\C=(\C,\Dis,\emptycon,\ell)$ consists of the following data.
+	\begin{itemize}
+		\item %
+			A strict category $\C$.
+		\item %
+			A structure $\Dis$ of a display map category for the underlying category of $\C$.
+		\item %
+			An object $\emptycon$ of $\C$ which is a terminal object in the underlying category of $\C$.
+		\item %
+			A function $\ell\colon\Obj(\C)\arr\dN$ satisfying the following conditions.
+			\begin{itemize}
+				\item %
+			\end{itemize}
 	\end{itemize}
 \end{definition}
 \newpage

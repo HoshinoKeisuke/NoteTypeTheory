@@ -288,7 +288,6 @@ decorations.markings,% to define the key vslash
 \newcommand*{\twoCATbi}{2\myphen\bi{CAT}}
 \newcommand*{\mrin}{\mathrm{\ in\ }}
 \mathchardef\mhyphen="2D % Define a "math hyphen"
-\newcommand*{\mpn}{\mhyphen}
 \newcommand*{\verteq}{\rotatebox{90}{$\,=$}}
 \newcommand*{\vertcong}{\rotatebox{270}{$\cong\,$}}
 \newcommand*{\defarrow}{\begin{tikzcd}[cramped, sep=small, ampersand replacement=\&] \  \arrow[r, Leftrightarrow, "\mathrm{def}"] \& \  \end{tikzcd}}
@@ -301,17 +300,15 @@ decorations.markings,% to define the key vslash
 \newcommand*{\mmboxfootnotesize}[1]{\mbox{\footnotesize $#1$}}
 \newcommand*{\mmboxscriptsize}[1]{\mbox{\scriptsize $#1$}}
 \newcommand*{\mmboxtiny}[1]{\mbox{\tiny $#1$}}
-\newcommand*{\op}{\mathsf{op}}
-\newcommand*{\co}{\mathsf{co}}
-\newcommand*{\hop}{\mathsf{hop}}
-\newcommand*{\vop}{\mathsf{vop}}
-\newcommand*{\dom}{\mathsf{dom}}
-\newcommand*{\cod}{\mathsf{cod}}
+\newcommand*{\op}{\mathtt{op}}
+\newcommand*{\co}{\mathtt{co}}
+\newcommand*{\hop}{\mathtt{hop}}
+\newcommand*{\vop}{\mathtt{vop}}
+\newcommand*{\dom}{\mathtt{dom}}
+\newcommand*{\cod}{\mathtt{cod}}
 \newcommand*{\abs}[1]{{\lvert #1\rvert}}
 \newcommand*{\oneabs}[1]{{\lvert\!\lvert #1\rvert\!\rvert}}
-\newcommand*{\Obj}{\mathrm{Obj}}
-\newcommand*{\coEM}[1]{{\mathsf{coEM}}(#1)}
-\newcommand*{\coEMp}[1]{{\mathsf{coEM}}^{\mathsf{cp}}(#1)}
+\newcommand*{\Obj}{\zero{Obj}}
 
 \newcommand*{\dgm}[1]{\mathbb{#1}}
 \newcommand*{\zero}[1]{\mathsf{#1}}
@@ -338,10 +335,21 @@ decorations.markings,% to define the key vslash
 }
 \makeatother
 %----- abbreviations (additional) -----------------------------------------------
+\newcommand*{\Rep}{\zero{Rep}}
+\newcommand*{\Repone}{\one{Rep}}
+\newcommand*{\Dis}{\zero{Dis}}
+\newcommand*{\Disone}{\one{Dis}}
 \newcommand*{\Fib}{\zero{Fib}}
+\newcommand*{\Fibone}{\one{Fib}}
 \newcommand*{\C}{\one{C}}
+\newcommand*{\R}{\one{R}}
 \newcommand*{\Cat}{\Catone}
 \newcommand*{\StrCat}{\one{StrCat}}
 \newcommand*{\infCat}{\infty\Catone}
 \newcommand*{\ra}{{\Delta^1}}
+\newcommand*{\disc}{{\mathtt{disc}}}
+\newcommand*{\WSub}{\zero{WSub}}
+\newcommand*{\WSubone}{\one{WSub}}
+\newcommand*{\emptycon}{(\!)}
+\newcommand*{\dN}{\mathbb{N}}
 \endinput
