@@ -226,6 +226,7 @@
 			if $A$ and $A'$ are equal as display maps and $t$ and $t'$ are equal as sections.
 			We say types (or terms) are \emph{judgementally equal} if such an equality holds.
 		\item %
+			(Biased product of contexts.)
 			Let $\Delta\in\C$ be a context and $\Gamma=\emptycon.A_0.\cdots.A_n$ be another context.
 			(Note that such a sequence $A_0,\cdots,A_n$ of types uniquely exists for any context $\Gamma$.)
 			We define $\Delta.\Gamma=\Delta.A_0.\cdots.A_n$ inductively as follows.
@@ -253,6 +254,52 @@
 						\end{tikzcd}
 					\]
 			\end{itemize}
+		\item %
+			(Morphisms of contexts.)
+			Let $\Delta,\Gamma$ be contexts.
+			A morphism $\tup{t}\colon\Delta\arr\Gamma$ can be seen as a tuple of terms.
+			For example, when we have $\Gamma=\emptycon.A_0.A_1$,
+			the morphism $\tup{t}$ is determined by the following terms $t_0,t_1$.
+			\[
+				\begin{tikzcd}
+					\Delta
+					\ar[r,"t_1"]
+					\ar[rd,equal]
+						&
+						\Delta.A_1[t_0/x_0]
+						\ar[d,fib]
+						\ar[r]
+						\pullback[rd]
+							&
+							\Delta.\Gamma
+							\ar[d,fib]
+							\ar[r]
+							\pullback[rd]
+								&
+								\emptycon.A_0.A_1=\Gamma
+								\ar[d,fib]
+					\\
+						&
+						\Delta
+						\ar[r,"t_0"]
+						\ar[rd,equal]
+							&
+							\Delta.A_0
+							\ar[d,fib]
+							\ar[r]
+							\pullback[rd]
+								&
+								\emptycon.A_0
+								\ar[d,fib]
+					\\
+						&
+							&
+							\Delta
+							\ar[r]
+								&
+								\emptycon
+				\end{tikzcd}
+			\]
 		\qedhere %
 	\end{itemize}
 \end{notation}
@@ -297,6 +344,8 @@
 	\]
 	of categories, which shows the biadjunction.
 \end{proof}
+
+
 \newpage
 \section{Logical framework à la Uemura}
 \begin{definition}
