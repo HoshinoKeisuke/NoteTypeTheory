@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.15)  17 APR 2024 19:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.15)  17 APR 2024 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -914,47 +914,47 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 (/opt/texlive/texdir/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 6.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 5.
 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 6
+LaTeX Font Info:    Trying to load font information for U+esint on input line 5
 .
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 6
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 5
 .
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
@@ -1016,33 +1016,26 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 6.
+Package hyperref Info: Link coloring ON on input line 5.
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
 Package hyperref Info: bookmark level for unknown notation defaults to 0 on inp
-ut line 10.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 24.
+ut line 8.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 22.
 
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 42.
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 90.
-
-Overfull \vbox (2.63968pt too high) has occurred while \output is active []
-
-
-[1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texli
-ve/texdir/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+nput line 39.
 Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
- line 153.
-
-Overfull \hbox (16.4865pt too wide) in paragraph at lines 238--240
+ line 45.
+ [1{/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texl
+ive/texdir/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+Overfull \hbox (16.4865pt too wide) in paragraph at lines 135--137
 []\T1/cmr/m/n/10.95 Suppose we have con-structed $\OT1/cmr/m/n/10.95 ^^A\OML/cm
 m/m/it/10.95 :A[]: []  :A[]$ \T1/cmr/m/n/10.95 and a pro-jec-tion $\OML/cmm/m/i
 t/10.95 p[] [] [] \OT1/cmr/m/n/10.95 ^^A\OML/cmm/m/it/10.95 :A[]: []  :A[] [] "
@@ -1050,15 +1043,17 @@ t/10.95 p[] [] [] \OT1/cmr/m/n/10.95 ^^A\OML/cmm/m/it/10.95 :A[]: []  :A[] [] "
  []
 
 [2]
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
+input line 284.
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 307.
- [3] (./main.bbl)
+t line 342.
+ [3] [4] (./main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-68.
- (/opt/texlive/texdir/texmf-dist/tex/latex/base/t1cmtt.fd
+3.
+
+(/opt/texlive/texdir/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-[4] (./main.aux)
+)) [5] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -1067,13 +1062,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6B1D3872C568E83D645A55DE9279BEEF;637.
  ) 
 Here is how much of TeX's memory you used:
- 30798 strings out of 474104
- 586811 string characters out of 5745485
- 1985493 words of memory out of 5000000
- 52403 multiletter control sequences out of 15000+600000
+ 30877 strings out of 474104
+ 588578 string characters out of 5745485
+ 1988493 words of memory out of 5000000
+ 52475 multiletter control sequences out of 15000+600000
  584565 words of font info for 130 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 131i,19n,141p,508b,1365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 131i,19n,141p,508b,1384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></o
 pt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></opt/tex
 live/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/texlive/t
@@ -1104,10 +1099,10 @@ r/sfrm0800.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm
 fb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></o
 pt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></opt/tex
 live/texdir/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on main.pdf (4 pages, 435495 bytes).
+Output written on main.pdf (5 pages, 446635 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
  37 words of extra memory for PDF output out of 10000 (max. 10000000)
 
