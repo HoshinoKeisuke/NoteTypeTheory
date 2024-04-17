@@ -34,9 +34,6 @@
 		\item %
 			By a \emph{replete class of morphisms} of $\C$, we mean a replete full subcategory of $\C^\ra$.
 		\item %
-			$\WSubone$ is the replete full sub (2,1)-category of $\Cat^\ra$
-			consisting of wide subcategory inclusions; i.e., faithful functors that induce equivalences on core groupoids.
-		\item %
 		\qedhere %
 	\end{itemize}
 \end{notation}
@@ -46,7 +43,9 @@
 	Arrows in $\dis_\C$ are called \emph{display maps} of $\C$.
 	\begin{itemize}
 		\item %
-			$\C$ has a terminal object.
+			$\C$ has a terminal object\footnote{
+				In some literature, this condition is omitted for the definition of display map category.
+			}.
 		\item %
 			Let $h\colon \Delta\arr \Gamma$ and $f\colon A\arr[fib] \Gamma$ be morphisms in $\C$ such that $f$ is a display map.
 			Then there is a pullback square
@@ -84,6 +83,7 @@
 			the full subcategory of the over category $\C_{/\Gamma}$ spanned by diplay maps in $\C$.
 		\item %
 			A display map in $\C(\Gamma)$ is a morphism $f\in\C(\Gamma)$ such that $\dom(f)$ is a display map in $\C$.
+		\qedhere %
 	\end{itemize}
 \end{definition}
 \begin{proposition}
@@ -139,58 +139,58 @@
 			For each object $A\in\C$, the unique morphism $A\arr 1$ towards the terminal object
 			is a fibraion.
 		\item %
-			$\fib_\C$ is closed under composition.
+			$\fib_\C$ is closed under composition and contains all isomorphisms.
 		\qedhere %
 	\end{itemize}
 	We write $\Clan$ for the full sub 2-category of $\CwD$ spanned by clans. Since clans are always democratic, this is a (2,1)-category.
 \end{definition}
-\begin{definition}
-	A \emph{strict category} is a category equipped with its wide subcategory that is a set.
-	In other words, the (2,1)-category $\StrCat$ of strict categories is defined by the following pullback square.
-	\[
-		\begin{tikzcd}
-			\StrCat
-			\ar[r]
-			\ar[dd,"\Obj"']
-			\pullback[rd]
-				&
-				\WSubone
-				\ar[d,hook]
-			\\
-				&
-				\Cat^\ra
-				\ar[d,"\dom"]
-			\\
-			\Set
-			\ar[r,"\disc"']
-				&
-				\Cat
-		\end{tikzcd}
-	\]
-	The functor on the left is locally fully faithful and surjective on objects.
-	In particular, $\StrCat$ is a category.
+\begin{definition}[Strict Categories]
+	We write $\StrCat$ for the (1-)category of categories, and an object in $\StrCat$ is called a \emph{strict category}.
+	For each strict category $\C$, we write $\Obj(\C)$ for its underlying object.
+	By \textit{object} of $\C$, we mean an element in $\Obj(\C)$.
 \end{definition}
+\begin{remark}
+	You can see a strict category as a category equipped with its data of \textit{objects};
+	we can define a \emph{strict category} as a category $\C$ equipped with a set $\Obj(\C)$ and a essentially surjective functor towards $\C$.
+	They form a full sub-(2,1)-category of $\Cat^\ra$, which is indeed equivalent to $\StrCat$.
+\end{remark}
 \begin{definition}
-	A \emph{contextual category} $\C=(\C,\dis_\C,\emptycon,\ell)$ consists of the following data.
+	A \emph{contextual category} $\C=(\C,\emptycon,\dis_\C)$ consists of the following data.
 	\begin{itemize}
 		\item %
 			A strict category $\C$.
 		\item %
-			A structure $\dis_\C$ of a display map category for the underlying category of $\C$.
+			An object $\emptycon$ of $\C$ which is a terminal object.
 		\item %
-			An object $\emptycon$ of $\C$ which is a terminal object in the underlying category of $\C$.
-		\item %
-			A function $\ell\colon\Obj(\C)\arr\dN$ satisfying the following conditions.
+			A class\footnote{
+				A \textit{class of morphisms} in a strict category $\C$ is just a subgraph of the \textit{underlying graph} of $\C$,
+				which is defined by pulling back $\C^\ra\arr\C\times\C$ along $\Obj(\C)\times\Obj(\C)\arr\C\times\C$.
+			}
+			$\dis_\C$ of \emph{display maps}  such that
 			\begin{itemize}
 				\item %
-					$\ell^{-1}(0)=\{\emptycon\}$.
+					for each object $\Gamma\in\Obj(\C)$, there exists
+					a unique path of display maps $\Gamma\arr[fib]\cdots\arr[fib]\emptycon$, and
 				\item %
-					The canonical function
+					for each display map $A=(\Gamma.A\arr[fib]\Gamma)$ and a morphism $\tup{t}\colon\Delta\arr\Gamma$
+					there exits a unique pullback square
 					\[
-						(\Gamma,A,f)\mapsto A\colon\coprod_{\Gamma\in\ell^{-1}(n)}\{(A,f)\,|\,f\colon A \arr[fib]\Gamma\}\arr\Obj(\C)
+						\begin{tikzcd}
+							\Delta.{A[\tup{t}/\tup{x}]}
+							\ar[r]
+							\ar[d,fib]
+							\pullback[rd]
+								&
+								\Gamma.A
+								\ar[d,fib,"p"]
+							\\
+							\Delta
+							\ar[r,"\tup{t}"']
+								&
+								\Gamma
+						\end{tikzcd}
 					\]
-					is a monomorphism and
-					$\ell^{-1}(n+1)$ coincides with its image.
+					whose left side is a display map, which is denoted by $A[\tup{t}/\tup{x}]$ and called the \emph{substitution} of $\tup{t}$ in $A$.
 			\end{itemize}
 	\end{itemize}
 	We write $\CwC$ for the category of contextual categories and functors preserving those structures.
@@ -202,23 +202,106 @@
 			A \emph{context} in $\C$ is an object in $\C$.
 		\item %
 			A \emph{type} $A$ over a context $\Gamma$ in $\C$ is a display map $A=(\Gamma.A\arr[fib]\Gamma)$.
+			We write
+			\[
+				\Gamma\vdash A \type
+			\]
+			if $A$ is a type over $\Gamma$.
 		\item %
+			A \emph{term} $t$ of a type $A$ over a context $\Gamma$ is a section of the display map $\Gamma.A\arr[fib]\Gamma$.
+			We write
+			\[
+				\Gamma\vdash t\tcolon A
+			\]
+			if $t$ is a term of $A$.
+		\item %
+			We write
+			\[
+				\Gamma\vdash A\doteq A' \type
+				\hspace{2ex}
+				\text{ and }
+				\hspace{2ex}
+				\Gamma\vdash t\doteq t'\tcolon A
+			\]
+			if $A$ and $A'$ are equal as display maps and $t$ and $t'$ are equal as sections.
+			We say types (or terms) are \emph{judgementally equal} if such an equality holds.
+		\item %
+			Let $\Delta\in\C$ be a context and $\Gamma=\emptycon.A_0.\cdots.A_n$ be another context.
+			(Note that such a sequence $A_0,\cdots,A_n$ of types uniquely exists for any context $\Gamma$.)
+			We define $\Delta.\Gamma=\Delta.A_0.\cdots.A_n$ inductively as follows.
+			\begin{itemize}
+				\item %
+					$\Delta.\emptycon:=\Delta$.
+					There is a canonical projection $p_{-1}\colon\Delta\arr\emptycon$.
+				\item %
+					Suppose we have constructed $\Delta.A_0.\cdots.A_i$ and a projection $p_i\colon\Delta.A_0.\cdots.A_i\arr\emptycon.A_0.\cdots.A_i$.
+					Then we define $\Delta.A_0.\cdots.A_i.A_{i+1}$ and $p_{i+1}$ as the following substitution.
+					\[
+						\begin{tikzcd}
+							\Delta.A_0.\cdots.A_i.A_{i+1}
+							\ar[r,"p_{i+1}"]
+							\ar[d,fib]
+							\pullback[rd]
+								&
+								\emptycon.A_0.\cdots.A_i.A_{i+1}
+								\ar[d,fib]
+							\\
+							\Delta.A_0.\cdots.A_i
+							\ar[r,"p_i"]
+								&
+								\emptycon.A_0.\cdots.A_i
+						\end{tikzcd}
+					\]
+			\end{itemize}
+		\qedhere %
 	\end{itemize}
 \end{notation}
 \begin{theorem}
-	There exists an 2-adjunction
+	There exists a biadjunction
 	\[
-		\adjunction{\CwC}{\CwD}{\abs{-}}{\ctx}
+		\adjunction{\CwC}{\CwD}{\abs{-}}{\cxt}
 	\]
 	that restricts to a biequivalence
 	\[
-		\adjunction(\simeq){\CwC}{\CwDdm}{\abs{-}}{\ctx}
+		\adjunction(\simeq){\CwC}{\CwDdm}{\abs{-}}{\cxt}
 	\]
+	In particular, $\CwDdm$ is essentially a 1-category; i.e., a setoid enriched category.
 \end{theorem}
-\section{Uemura's logical framework}
+\begin{proof}[Sketch of proof]
+	There is a canonical way to see a contextual catgory as a display map category. This indeed induces a 2-functor $\abs{-}\colon\CwC\arr\CwD$.
+
+	For each display map category $\D$,
+	we construct a contextual category $\cxt(\D)$ as follows.
+	\begin{itemize}
+		\item %
+			Firstly, choose a terminal object $1$.
+			Then choose a section $\Gamma.-$ of the quotient functor $\core{\D(\Gamma)}\arr\pi_0(\core{\D(\Gamma)})$ for each $\Gamma\in\D$.
+		\item %
+			An object in $\cxt(\D)$ is a tuple $(A_0,A_1,\cdots, A_n)$ $(n\geq 0)$
+			such that
+			\begin{itemize}
+				\item %
+					$A_0\in\pi_0(\D(1))$.
+				\item %
+					$A_{i+1}\in\pi_0(\D(1.A_0.\cdots.A_{i}))$ for each $0\leq i<n$.
+			\end{itemize}
+		\item %
+			A morphism $(A_0,\cdots,A_n)\arr(B_0,\cdots,B_m)$ is a morphism $1.A_0.\cdots.A_n\arr1.B_0.\cdots.B_m$.
+	\end{itemize}
+	$\cxt(\D)$ is independent of the choice of the terminal object and the sections of the quotient functors, up to isomorphism of categories.
+	Moreover, one can check the natural equivalence
+	\[
+		\CwC(\C,\cxt(\D))
+		\simeq
+		\CwD(\abs{\C},\D)
+	\]
+	of categories, which shows the biadjunction.
+\end{proof}
+\newpage
+\section{Logical framework à la Uemura}
 \begin{definition}
-	A \emph{representable map category} $\R=(\R,\rep_\R)$ is a display map category satisfying the following conditions.
-	Display maps (i.e., arrows in $\rep_\R$) are called \emph{representable maps} of $\R$.
+	A \emph{representable map category} $\R=(\R,\rep_\R)$ is a clan satisfying the following conditions.
+	Arrows in $\rep_\R$ are called \emph{representable maps} of $\R$.
 	\begin{itemize}
 		\item %
 			$\R$ is finitely complete.
@@ -228,8 +311,21 @@
 		\qedhere %
 	\end{itemize}
 \end{definition}
-\newpage
 
+
+\bibliographystyle{halpha-abbrv}
+\bibliography{bibliography}
+
+\end{document}
+					The canonical function
+					\[
+						(\Gamma,A,f)\mapsto A\colon\coprod_{\Gamma\in\ell^{-1}(n),A\in\Obj(\C)}\C(A,\Gamma)\arr\Obj(\C)
+					\]
+					is a monomorphism and
+					$\ell^{-1}(n+1)$ coincides with its image.
+		\item %
+			$\WSubone$ is the replete full sub (2,1)-category of $\Cat^\ra$
+			consisting of wide subcategory inclusions; i.e., faithful functors that induce equivalences on core groupoids.
 \begin{theorem}
 	shoumei no aidani claim ireru yatu
 \end{theorem}
@@ -257,8 +353,3 @@
 		\lipsum[2]
 	\end{since}
 \end{proof}
-
-\bibliographystyle{halpha-abbrv}
-\bibliography{bibliography}
-
-\end{document}
