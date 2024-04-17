@@ -73,16 +73,53 @@
 	\end{itemize}
 \end{definition}
 \begin{definition}
+	Suppose we are given
+	a display map category $\C$
+	and
+	an object $\Gamma\in\C$.
+	We define a diplay map category $\C(\Gamma)$ as follows.
+	\begin{itemize}
+		\item %
+			The underlying category is
+			the full subcategory of the over category $\C_{/\Gamma}$ spanned by diplay maps in $\C$.
+		\item %
+			A display map in $\C(\Gamma)$ is a morphism $f\in\C(\Gamma)$ such that $\dom(f)$ is a display map in $\C$.
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	The above definition indeed gives a display map category.
+\end{proposition}
+\begin{definition}
 	Define the 2-category $\CwD$ of display map categories
 	as follows.
 	\begin{itemize}
 		\item %
 			0-cells are display map categories.
 		\item %
-			1-cells are functors preserving the terminal object, display maps, and pullbacks of the form \Cref{dgm:substPullback}.
+			1-cells are functors preserving the terminal object, display maps, and pullbacks of the forms \Cref{dgm:substPullback}.
 		\item %
-			A 2-cell $\alpha\colon F\arr[Rightarrow]G$ is a natural transformation such that
-			naturality squares at display maps are pullback squares.
+			A 2-cell $\alpha\colon F\arr[Rightarrow]G\colon\C\arr\D$ is a natural transformation such that
+			naturality squares at display maps are pullback squares;
+			i.e.,
+			for each display map $f\colon A\arr[fib]\Gamma$ in $\C$,
+			the naturality square
+			\[
+				\begin{tikzcd}
+					FA
+					\ar[r,"\alpha_A"]
+					\ar[d,"F(f)"']
+					\pullback[rd]
+						&
+						GA
+						\ar[d,"G(f)"]
+					\\
+					F\Gamma
+					\ar[r,"\alpha_\Gamma"']
+						&
+						G\Gamma
+				\end{tikzcd}
+			\]
+			is a pullback square in $\D$.
 		\qedhere %
 	\end{itemize}
 \end{definition}
@@ -158,6 +195,16 @@
 	\end{itemize}
 	We write $\CwC$ for the category of contextual categories and functors preserving those structures.
 \end{definition}
+\begin{notation}
+	Let $\C$ be a contextual category.
+	\begin{itemize}
+		\item %
+			A \emph{context} in $\C$ is an object in $\C$.
+		\item %
+			A \emph{type} $A$ over a context $\Gamma$ in $\C$ is a display map $A=(\Gamma.A\arr[fib]\Gamma)$.
+		\item %
+	\end{itemize}
+\end{notation}
 \begin{theorem}
 	There exists an 2-adjunction
 	\[
