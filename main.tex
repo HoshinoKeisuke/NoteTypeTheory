@@ -1,11 +1,9 @@
 \documentclass[a4paper,dvipsnames, 11pt]{amsart}
 \usepackage{preamble}
 \usepackage{lipsum}
-\vspace{10ex}
 
 \begin{document}
 \maketitle
-\cite{Cis19}
 \begin{notation}
 	We employ the following notations.
 	\begin{itemize}
@@ -33,11 +31,207 @@
 			or $\C_{A/}\arr\C$.
 		\item %
 			By a \emph{replete class of morphisms} of $\C$, we mean a replete full subcategory of $\C^\ra$.
-		\item %
 		\qedhere %
 	\end{itemize}
 \end{notation}
 \section{Dependent type theories in terms of display maps}
+See also \cite{nlaDTT}.
+\begin{definition}[Strict Categories]
+	We write $\StrCat$ for the (1-)category of categories, and an object in $\StrCat$ is called a \emph{strict category}.
+	For each strict category $\C$, we write $\Obj(\C)$ for its underlying object.
+	By \textit{object} of $\C$, we mean an element in $\Obj(\C)$.
+\end{definition}
+\begin{remark}
+	You can see a strict category as a category equipped with its data of \textit{objects};
+	we can define a \emph{strict category} as a category $\C$ equipped with a set $\Obj(\C)$ and a essentially surjective functor towards $\C$.
+	They form a full sub-(2,1)-category of $\Cat^\ra$, which is indeed equivalent to $\StrCat$.
+\end{remark}
+\begin{definition}[See \cite{KL18,KL21,nlaDTT}.]
+	A \emph{contextual category} $\T$ consists of the following data.
+	\begin{itemize}
+		\item %
+			A strict category $\T$.
+		\item %
+			An object $\emptycon$ of $\T$ which is a terminal object.
+		\item %
+			A class\footnote{
+				A \textit{class of morphisms} in a strict category $\T$ is just a subgraph of the \textit{underlying graph} of $\T$,
+				which is defined by pulling back $\T^\ra\arr\T\times\T$ along $\Obj(\T)\times\Obj(\T)\arr\T\times\T$.
+			}
+			$\dis_\T$ of \emph{display maps} such that
+			for each object $\Gamma\in\Obj(\T)$, there exists
+			a unique path of display maps $\Gamma\arr[fib]\cdots\arr[fib]\emptycon$.
+		\item %
+			For each display map $A=(\Gamma.A\arr[fib]\Gamma)$ and a morphism $\tup{t}\colon\Delta\arr\Gamma$
+			there is a canonical pullback square
+			\[
+				\begin{tikzcd}
+					\Delta.{A[\tup{t}/\tup{x}]}
+					\ar[r,"{q(\tup{t},p)}"]
+					\ar[d,fib]
+					\pullback[rd]
+						&
+						\Gamma.A
+						\ar[d,fib,"p"]
+					\\
+					\Delta
+					\ar[r,"\tup{t}"']
+						&
+						\Gamma
+				\end{tikzcd}
+			\]
+			whose left side is a display map, which is denoted by $A[\tup{t}/\tup{x}]$ and called the \emph{substitution} of $\tup{t}$ in $A$.
+			Moreover, those substitutions are strictly functorial:
+			$A[\tup{t}/\tup{x}][\tup{s}/\tup{y}]=A[\tup{t}\circ\tup{s}/\tup{y}]$ and $q(\tup{t},A)\circ q(\tup{s},A[\tup{t}/\tup{x}])=q(\tup{t}\circ \tup{s},A)$.
+	\end{itemize}
+	We write $\CwC$ for the category of contextual categories and functors preserving those structures.
+\end{definition}
+\begin{notation}
+	Let $\T$ be a contextual category.
+	\begin{itemize}
+		\item %
+			A \emph{context} in $\T$ is an object in $\T$.
+		\item %
+			A \emph{type} $A$ over a context $\Gamma$ in $\C$ is a display map $A=(\Gamma.A\arr[fib]\Gamma)$.
+			We write
+			\[
+				\Gamma\vdash A \type
+			\]
+			if $A$ is a type over $\Gamma$.
+		\item %
+			A \emph{term} $t$ of a type $A$ over a context $\Gamma$ is a section of the display map $\Gamma.A\arr[fib]\Gamma$.
+			We write
+			\[
+				\Gamma\vdash t\tcolon A
+			\]
+			if $t$ is a term of $A$.
+			Moreover, if we have $\Gamma=\Delta.X$, then
+			we also write
+			\[
+				\Delta, x:X\vdash t(x)\tcolon A(x)
+			\]
+			for this judgement.
+		\item %
+			We write
+			\[
+				\Gamma\vdash A\doteq A' \type
+				\hspace{2ex}
+				\text{ and }
+				\hspace{2ex}
+				\Gamma\vdash t\doteq t'\tcolon A
+			\]
+			if $A$ and $A'$ are equal as display maps and $t$ and $t'$ are equal as sections.
+			We say types (or terms) are \emph{judgementally equal} if such an equality holds.
+		\item %
+			(Biased product of contexts.)
+			Let $\Delta\in\C$ be a context and $\Gamma=\emptycon.A_0.\cdots.A_n$ be another context.
+			(Note that such a sequence $A_0,\cdots,A_n$ of types uniquely exists for any context $\Gamma$.)
+			We define $\Delta.\Gamma=\Delta.A_0.\cdots.A_n$ inductively as follows.
+			\begin{itemize}
+				\item %
+					$\Delta.\emptycon:=\Delta$.
+					There is a canonical projection $p_{-1}\colon\Delta\arr\emptycon$.
+				\item %
+					Suppose we have constructed $\Delta.A_0.\cdots.A_i$ and a projection $p_i\colon\Delta.A_0.\cdots.A_i\arr\emptycon.A_0.\cdots.A_i$.
+					Then we define $\Delta.A_0.\cdots.A_i.A_{i+1}$ and $p_{i+1}$ as the following substitution.
+					\[
+						\begin{tikzcd}
+							\Delta.A_0.\cdots.A_i.A_{i+1}
+							\ar[r,"p_{i+1}"]
+							\ar[d,fib]
+							\pullback[rd]
+								&
+								\emptycon.A_0.\cdots.A_i.A_{i+1}
+								\ar[d,fib]
+							\\
+							\Delta.A_0.\cdots.A_i
+							\ar[r,"p_i"]
+								&
+								\emptycon.A_0.\cdots.A_i
+						\end{tikzcd}
+					\]
+			\end{itemize}
+		\item %
+			(Morphisms of contexts.)
+			Let $\Delta,\Gamma$ be contexts.
+			A morphism $\tup{t}\colon\Delta\arr\Gamma$ can be seen as a tuple of terms.
+			For example, when we have $\Gamma=\emptycon.A_0.A_1$,
+			the morphism $\tup{t}$ is determined by the following terms $t_0,t_1$.
+			\[
+				\begin{tikzcd}
+					\Delta
+					\ar[r,"t_1"]
+					\ar[rd,equal]
+						&
+						\Delta.A_1[t_0/x_0]
+						\ar[d,fib]
+						\ar[r]
+						\pullback[rd]
+							&
+							\Delta.\Gamma
+							\ar[d,fib]
+							\ar[r]
+							\pullback[rd]
+								&
+								\emptycon.A_0.A_1=\Gamma
+								\ar[d,fib]
+					\\
+						&
+						\Delta
+						\ar[r,"t_0"]
+						\ar[rd,equal]
+							&
+							\Delta.A_0
+							\ar[d,fib]
+							\ar[r]
+							\pullback[rd]
+								&
+								\emptycon.A_0
+								\ar[d,fib]
+					\\
+						&
+							&
+							\Delta
+							\ar[r]
+								&
+								\emptycon
+				\end{tikzcd}
+			\]
+		\qedhere %
+	\end{itemize}
+\end{notation}
+\begin{definition}
+	Let $\C$ be a contextual category.
+	We say $\C$ has \emph{extensional $\Sigma$-types} if
+	for each context $\Gamma$ and types $\Gamma\vdash A \type$ and $\Gamma.A\vdash B\type$,
+	it satisfies the following condition.
+		There exists a type
+		\[
+			\Gamma.A.B\vdash \Sigma(A, x.B)\type
+		\]
+		and terms
+		\[
+			\Gamma.A.B\vdash \pair \tcolon\Sigma(A, x.B)
+		\]
+		\[
+			\Gamma.\Sigma(A, x.B)\vdash \prl \tcolon A
+			\hspace{2ex}
+			\text{ and }
+			\hspace{2ex}
+			\Gamma.\Sigma(A, x.B)\vdash \prr \tcolon B[\prl/x]
+		\]
+		satisfying the following judgemental equalities;
+		\[
+			\Gamma.\Sigma(A, x.B)\vdash \pair\circ\langle\prl,\prr\rangle \doteq (p\mapsto p)
+		\]
+		\[
+			\Gamma.A.B\vdash \prl\circ\pair \doteq (x:A,y:B\mapsto x)
+			\text{,}
+			\hspace{3ex}
+			\Gamma.A.B\vdash \prr\circ\pair \doteq (x:A,y:B\mapsto y)
+		\]
+	We write $\CwC_\Sigma$ for the full subcategory of $\CwC$ consisting of those with extensional $\Sigma$-types.
+\end{definition}
 \begin{definition}
 	A \emph{display map category} $\C=(\C,\dis_\C)$ is a pair of a category $\C$ and a replete class $\dis_\C$ of morphisms satisfying the following conditions.
 	Arrows in $\dis_\C$ are called \emph{display maps} of $\C$.
@@ -131,7 +325,7 @@
 \begin{proposition}
 	$\CwDdm$ is a (2,1)-category.
 \end{proposition}
-\begin{definition}
+\begin{definition}[\cite{Joy17}]
 	A \emph{clan} $\C=(\C,\fib_\C)$ is a display map category satisfying the following conditions.
 	Display maps (i.e., arrows in $\fib_\C$) are called \emph{fibrations} of $\C$.
 	\begin{itemize}
@@ -144,178 +338,22 @@
 	\end{itemize}
 	We write $\Clan$ for the full sub 2-category of $\CwD$ spanned by clans. Since clans are always democratic, this is a (2,1)-category.
 \end{definition}
-\begin{definition}[Strict Categories]
-	We write $\StrCat$ for the (1-)category of categories, and an object in $\StrCat$ is called a \emph{strict category}.
-	For each strict category $\C$, we write $\Obj(\C)$ for its underlying object.
-	By \textit{object} of $\C$, we mean an element in $\Obj(\C)$.
-\end{definition}
-\begin{remark}
-	You can see a strict category as a category equipped with its data of \textit{objects};
-	we can define a \emph{strict category} as a category $\C$ equipped with a set $\Obj(\C)$ and a essentially surjective functor towards $\C$.
-	They form a full sub-(2,1)-category of $\Cat^\ra$, which is indeed equivalent to $\StrCat$.
-\end{remark}
-\begin{definition}
-	A \emph{contextual category} $\C=(\C,\emptycon,\dis_\C)$ consists of the following data.
-	\begin{itemize}
-		\item %
-			A strict category $\C$.
-		\item %
-			An object $\emptycon$ of $\C$ which is a terminal object.
-		\item %
-			A class\footnote{
-				A \textit{class of morphisms} in a strict category $\C$ is just a subgraph of the \textit{underlying graph} of $\C$,
-				which is defined by pulling back $\C^\ra\arr\C\times\C$ along $\Obj(\C)\times\Obj(\C)\arr\C\times\C$.
-			}
-			$\dis_\C$ of \emph{display maps}  such that
-			\begin{itemize}
-				\item %
-					for each object $\Gamma\in\Obj(\C)$, there exists
-					a unique path of display maps $\Gamma\arr[fib]\cdots\arr[fib]\emptycon$, and
-				\item %
-					for each display map $A=(\Gamma.A\arr[fib]\Gamma)$ and a morphism $\tup{t}\colon\Delta\arr\Gamma$
-					there exits a unique pullback square
-					\[
-						\begin{tikzcd}
-							\Delta.{A[\tup{t}/\tup{x}]}
-							\ar[r]
-							\ar[d,fib]
-							\pullback[rd]
-								&
-								\Gamma.A
-								\ar[d,fib,"p"]
-							\\
-							\Delta
-							\ar[r,"\tup{t}"']
-								&
-								\Gamma
-						\end{tikzcd}
-					\]
-					whose left side is a display map, which is denoted by $A[\tup{t}/\tup{x}]$ and called the \emph{substitution} of $\tup{t}$ in $A$.
-			\end{itemize}
-	\end{itemize}
-	We write $\CwC$ for the category of contextual categories and functors preserving those structures.
-\end{definition}
-\begin{notation}
-	Let $\C$ be a contextual category.
-	\begin{itemize}
-		\item %
-			A \emph{context} in $\C$ is an object in $\C$.
-		\item %
-			A \emph{type} $A$ over a context $\Gamma$ in $\C$ is a display map $A=(\Gamma.A\arr[fib]\Gamma)$.
-			We write
-			\[
-				\Gamma\vdash A \type
-			\]
-			if $A$ is a type over $\Gamma$.
-		\item %
-			A \emph{term} $t$ of a type $A$ over a context $\Gamma$ is a section of the display map $\Gamma.A\arr[fib]\Gamma$.
-			We write
-			\[
-				\Gamma\vdash t\tcolon A
-			\]
-			if $t$ is a term of $A$.
-		\item %
-			We write
-			\[
-				\Gamma\vdash A\doteq A' \type
-				\hspace{2ex}
-				\text{ and }
-				\hspace{2ex}
-				\Gamma\vdash t\doteq t'\tcolon A
-			\]
-			if $A$ and $A'$ are equal as display maps and $t$ and $t'$ are equal as sections.
-			We say types (or terms) are \emph{judgementally equal} if such an equality holds.
-		\item %
-			(Biased product of contexts.)
-			Let $\Delta\in\C$ be a context and $\Gamma=\emptycon.A_0.\cdots.A_n$ be another context.
-			(Note that such a sequence $A_0,\cdots,A_n$ of types uniquely exists for any context $\Gamma$.)
-			We define $\Delta.\Gamma=\Delta.A_0.\cdots.A_n$ inductively as follows.
-			\begin{itemize}
-				\item %
-					$\Delta.\emptycon:=\Delta$.
-					There is a canonical projection $p_{-1}\colon\Delta\arr\emptycon$.
-				\item %
-					Suppose we have constructed $\Delta.A_0.\cdots.A_i$ and a projection $p_i\colon\Delta.A_0.\cdots.A_i\arr\emptycon.A_0.\cdots.A_i$.
-					Then we define $\Delta.A_0.\cdots.A_i.A_{i+1}$ and $p_{i+1}$ as the following substitution.
-					\[
-						\begin{tikzcd}
-							\Delta.A_0.\cdots.A_i.A_{i+1}
-							\ar[r,"p_{i+1}"]
-							\ar[d,fib]
-							\pullback[rd]
-								&
-								\emptycon.A_0.\cdots.A_i.A_{i+1}
-								\ar[d,fib]
-							\\
-							\Delta.A_0.\cdots.A_i
-							\ar[r,"p_i"]
-								&
-								\emptycon.A_0.\cdots.A_i
-						\end{tikzcd}
-					\]
-			\end{itemize}
-		\item %
-			(Morphisms of contexts.)
-			Let $\Delta,\Gamma$ be contexts.
-			A morphism $\tup{t}\colon\Delta\arr\Gamma$ can be seen as a tuple of terms.
-			For example, when we have $\Gamma=\emptycon.A_0.A_1$,
-			the morphism $\tup{t}$ is determined by the following terms $t_0,t_1$.
-			\[
-				\begin{tikzcd}
-					\Delta
-					\ar[r,"t_1"]
-					\ar[rd,equal]
-						&
-						\Delta.A_1[t_0/x_0]
-						\ar[d,fib]
-						\ar[r]
-						\pullback[rd]
-							&
-							\Delta.\Gamma
-							\ar[d,fib]
-							\ar[r]
-							\pullback[rd]
-								&
-								\emptycon.A_0.A_1=\Gamma
-								\ar[d,fib]
-					\\
-						&
-						\Delta
-						\ar[r,"t_0"]
-						\ar[rd,equal]
-							&
-							\Delta.A_0
-							\ar[d,fib]
-							\ar[r]
-							\pullback[rd]
-								&
-								\emptycon.A_0
-								\ar[d,fib]
-					\\
-						&
-							&
-							\Delta
-							\ar[r]
-								&
-								\emptycon
-				\end{tikzcd}
-			\]
-		\qedhere %
-	\end{itemize}
-\end{notation}
 \begin{theorem}
 	There exists a biadjunction
 	\[
 		\adjunction{\CwC}{\CwD}{\abs{-}}{\cxt}
 	\]
-	that restricts to a biequivalence
+	that restricts to the following biequivalences;
 	\[
 		\adjunction(\simeq){\CwC}{\CwDdm}{\abs{-}}{\cxt}
 	\]
-	In particular, $\CwDdm$ is essentially a 1-category; i.e., a setoid enriched category.
+	\[
+		\adjunction(\simeq){\CwC_\Sigma}{\Clan}{\abs{-}}{\cxt}
+	\]
+	In particular, $\CwDdm$ and $\Clan$ are essentially 1-categories; i.e., setoid enriched categories.
 \end{theorem}
 \begin{proof}[Sketch of proof]
-	There is a canonical way to see a contextual catgory as a display map category. This indeed induces a 2-functor $\abs{-}\colon\CwC\arr\CwD$.
+	There is a canonical way to see a contextual catgory as a display map category. This indeed induces a 2-functor $\abs{-}\colon\CwC\arr\CwD$ which is an embedding.
 
 	For each display map category $\D$,
 	we construct a contextual category $\cxt(\D)$ as follows.
@@ -338,16 +376,20 @@
 	$\cxt(\D)$ is independent of the choice of the terminal object and the sections of the quotient functors, up to isomorphism of categories.
 	Moreover, one can check the natural equivalence
 	\[
-		\CwC(\C,\cxt(\D))
+		\CwC(\T,\cxt(\D))
 		\simeq
-		\CwD(\abs{\C},\D)
+		\CwD(\abs{\T},\D)
 	\]
 	of categories, which shows the biadjunction.
+	By definition of $\cxt(\D)$, the counit $\abs{\cxt(\D)}\arr\D$ is an embedding,
+	and it is essentially surjective if and only if $\D$ is democratic. This shows the first biequivalence.
+	The second one is checked by confirming the image of clans under $\cxt$ has extensional $\Sigma$-types.
 \end{proof}
 
 
 \newpage
 \section{Logical framework à la Uemura}
+\cite{Uem23}
 \begin{definition}
 	A \emph{representable map category} $\R=(\R,\rep_\R)$ is a clan satisfying the following conditions.
 	Arrows in $\rep_\R$ are called \emph{representable maps} of $\R$.
@@ -366,39 +408,3 @@
 \bibliography{bibliography}
 
 \end{document}
-					The canonical function
-					\[
-						(\Gamma,A,f)\mapsto A\colon\coprod_{\Gamma\in\ell^{-1}(n),A\in\Obj(\C)}\C(A,\Gamma)\arr\Obj(\C)
-					\]
-					is a monomorphism and
-					$\ell^{-1}(n+1)$ coincides with its image.
-		\item %
-			$\WSubone$ is the replete full sub (2,1)-category of $\Cat^\ra$
-			consisting of wide subcategory inclusions; i.e., faithful functors that induce equivalences on core groupoids.
-\begin{theorem}
-	shoumei no aidani claim ireru yatu
-\end{theorem}
-\begin{proof}
-	\lipsum[1]
-	\begin{claim}
-		nannka claim siro
-	\end{claim}
-	\begin{since}
-		\lipsum[2]
-	\end{since}
-	\lipsum[3]
-\end{proof}
-\begin{theorem}
-	Saigo ni claim kuru taipu.
-\end{theorem}
-\begin{proof}
-	\lipsum[1]
-	This follows from the following Claim, which completes the proof.
-	\qedhere
-	\begin{claim}
-		nannka claim siro
-	\end{claim}
-	\begin{since}
-		\lipsum[2]
-	\end{since}
-\end{proof}
