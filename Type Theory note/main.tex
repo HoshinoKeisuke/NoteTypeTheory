@@ -1,0 +1,361 @@
+\documentclass[a4paper,dvipsnames, 11pt]{amsart} %pdf latex
+\usepackage{preamble}
+\usepackage{pftools}
+\usepackage{mathpartir}
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+	\inred{abstract}
+\end{abstract}
+\section{\inred{outline}}
+
+
+\subfile{subfiles/Introduction}
+\subfile{subfiles/Preliminary}
+\section{Basics}
+\paragraph{Structure}
+Some might be redundant.
+\footnotesize\begin{mathpar}
+	\inferH{Wkg}{
+		\Gamma\vdash A\type\\
+		\Gamma,\Delta\vdash\J\\
+		x\notin\Var(\Gamma,\Delta)
+	}{
+		\Gamma,x\col A,\Delta\vdash\J
+		\\
+		\Var(\Gamma,x\col A,\Delta)=\Var(\Gamma,\Delta)\sqcup\{x\}
+	}
+	\hspace{2ex}
+	\inferH{Vble}{
+		\Gamma,x\col A,\Delta\vdash\cxt\\
+	}{
+		\Gamma,x\col A,\Delta\vdash x\col A
+	}
+	\\
+	\inferH{Subst}{
+		\Gamma\vdash a\col A\\
+		\Gamma,x\col A,\Delta\vdash\J
+	}{
+		\Gamma,\Delta[x:=a]\vdash\J[x:=a]
+	}
+	\\
+	\inferH{TypeDeqUnit}{
+		\Gamma\vdash A\mtype
+	}{
+		\Gamma\vdash A\equiv A
+	}
+	\hspace{2ex}
+	\inferH{TypeDeqSymm}{
+		\Gamma\vdash B\equiv A
+	}{
+		\Gamma\vdash A\equiv B
+	}
+	\hspace{2ex}
+	\inferH{TypeDeqTrans}{
+		\Gamma\vdash A\equiv B\\
+		\Gamma\vdash B\equiv C
+	}{
+		\Gamma\vdash A\equiv C
+	}
+	\\
+	\inferH{TermDeqUnit}{
+		\Gamma\vdash a\col A
+	}{
+		\Gamma\vdash a\equiv a\col A
+	}
+	\hspace{2ex}
+	\inferH{TermDeqSymm}{
+		\Gamma\vdash a\equiv b\col A
+	}{
+		\Gamma\vdash b\equiv a\col A
+	}
+	\hspace{2ex}
+	\inferH{TermDeqTrans}{
+		\Gamma\vdash a\equiv b\col A\\
+		\Gamma\vdash b\equiv c\col A
+	}{
+		\Gamma\vdash a\equiv c\col A
+	}
+	\\
+	\inferH{DeqSubst}{
+		\Gamma\vdash A\equiv B\\
+		\Gamma\vdash a\col A
+	}{
+		\Gamma\vdash a\col B
+	}
+	\hspace{2ex}
+	\inferH{DeqSubstEq}{
+		\Gamma\vdash A\equiv B\\
+		\Gamma\vdash a\equiv b\col A
+	}{
+		\Gamma\vdash a\equiv b\col B
+	}
+	\hspace{2ex}
+	\inferH{DeqSubstType}{
+		\Gamma\vdash A\equiv B\\
+		\Gamma\vdash A\type
+	}{
+		\Gamma\vdash B\type
+	}
+	\\
+	\inferH{Metatype}{
+		\Gamma\vdash A\type
+	}{
+		\Gamma\vdash A\mtype
+	}
+	\\
+	\inferH{sanity-ctx}{
+		\Gamma\vdash A\mtype
+	}{
+		\Gamma\vdash\cxt
+	}
+	\hspace{2ex}
+	\inferH{sanity-term}{
+		\Gamma\vdash a\col A
+	}{
+		\Gamma\vdash A\mtype
+	}
+\end{mathpar}
+\paragraph{Extensional dependent pair (meta)type}
+\footnotesize\begin{mathpar}
+	\inferH{DPairType}{
+		\Gamma,x\col A\vdash B\mtype
+	}{
+		\Gamma\vdash \Sigma(x\col A, B)\mtype
+	}
+	\hspace{3ex}
+	\inferH{DPairMeta}{
+		\Gamma,x\col A\vdash B\type
+	}{
+		\Gamma\vdash \Sigma(x\col A, B)\type
+	}
+	\\
+	\inferH{DPairPair}{
+		\Gamma,x\col A\vdash B\mtype \\
+		\Gamma\vdash a\col A \\
+		\Gamma\vdash b\col B[x:=a] \\
+	}{
+		\Gamma\vdash\langle a,b\rangle\col\Sigma(x\col A,B)
+	}
+	\hspace{2ex}
+	\inferH{DPairProj}{
+		\Gamma,x\col A\vdash B\type \\
+		\Gamma\vdash p\col\Sigma(x\col A,B)
+	}{
+		\Gamma\vdash \prl p\col A \\
+		\Gamma\vdash \prr p\col B[x:=\prl p]
+	}
+	\\
+	\inferH{DPairRule1}{
+		\Gamma,x\col A\vdash B\type \\
+		\Gamma\vdash a\col A \\
+		\Gamma\vdash b\col B[x:=a] \\
+	}{
+		\Gamma\vdash\prl\langle a,b\rangle \equiv a \\
+		\Gamma\vdash\prr\langle a,b\rangle \equiv b
+	}
+	\hspace{2ex}
+	\inferH{DPairRule2}{
+		\Gamma,x\col A\vdash B\type \\
+		\Gamma\vdash p\col\Sigma(x\col A,B)
+	}{
+		\Gamma\vdash\langle\prl p,\prr p\rangle\equiv p
+	}
+\end{mathpar}
+\paragraph{Dependent function metatype}
+\footnotesize\begin{mathpar}
+	\inferH{DFunMeta}{
+		\Gamma,x\col A\vdash B\mtype
+	}{
+		\Gamma\vdash \Pi(x\col A, B)\mtype
+	}
+	\\
+	\inferH{DFunAbs}{
+		\Gamma,x\col A\vdash B\mtype \\
+		\Gamma,x\col A\vdash b\col B
+	}{
+		\Gamma\vdash\lambda x\col A. b\col\Pi(x\col A, B)
+	}
+	\hspace{2ex}
+	\inferH{DFunApp}{
+		\Gamma,x\col A\vdash B\mtype \\
+		\Gamma\vdash f\col \Pi(x\col A,B)
+	}{
+		\Gamma, x\col A\vdash\app(f,x)\col B
+	}
+	\\
+	\inferH{beta}{
+		\Gamma,x\col A\vdash B\mtype \\
+		\Gamma,x\col A\vdash b\col B
+	}{
+		\Gamma,x\col A\vdash \app(\lambda x\col A. b,x)\equiv b
+	}
+	\hspace{2ex}
+	\inferH{eta}{
+		\Gamma,x\col A\vdash B\mtype \\
+		\Gamma\vdash f\col \Pi(x\col A,B)
+	}{
+		\Gamma\vdash\lambda x\col A.\app(f,x)\equiv f
+	}
+\end{mathpar}
+\paragraph{Identity type}
+\footnotesize\begin{mathpar}
+	\inferH{IdIntr}{
+		\Gamma\vdash A\type
+	}{
+		\Gamma,x\col A,x'\col A\vdash x=_Ax'\type\\
+		\Gamma,x\col A\vdash \refl_x\col x=_Ax
+	}
+	\\
+	\inferH{IdRec}{
+		\Gamma\vdash A\type \\
+		\Gamma\vdash a\col A \\
+		\Gamma,x\col A,u\col a=_Ax\vdash P\type \\
+		\Gamma\vdash p_0\col P[x:=a,u:=\refl_a]\type
+	}{
+		\Gamma,x\col A,u\col a=_Ax\vdash \rec_a(p_0)\col P \\
+		\Gamma\vdash \rec_a(p_0)[x:=a,u:=\refl_a]\equiv p_0
+	}
+\end{mathpar}
+\begin{definition}
+\footnotesize\begin{mathpar}
+	\inferH{IsContr}{
+		\Gamma\vdash A\type
+	}{
+		\Gamma\vdash\iscontr(A)\equiv\Sigma(a\col A,\Pi(x\col A,a=_Ax))
+	}
+\end{mathpar}
+\end{definition}
+\begin{proof}
+\footnotesize\begin{mathpar}
+	\infer[\ref{DeqSubstType}]{
+		\Gamma\vdash\iscontr(A)\mtype
+	}{
+		\infer[\ref{DPairMeta}]{
+			\Gamma\vdash\Sigma(a\col A,\Pi(x\col A,a=_Ax))\mtype
+		}{
+			\infer[\ref{DFunMeta}]{
+				\Gamma,a\col A\vdash\Pi(x\col A,a=_Ax)\mtype
+			}{
+				\infer[\ref{Metatype}]{
+					\Gamma,a\col A,x\col A\vdash a=_Ax \mtype
+				}{
+					\infer[\ref{IdIntr}]{
+						\Gamma,a\col A,x\col A\vdash a=_Ax \type
+					}{
+						\Gamma\vdash A\type
+					}
+				}
+			}
+		}
+		\\
+		\infer[\ref{IsContr}]{
+			\Gamma\vdash\iscontr(A)\equiv\Sigma(a\col A,\Pi(x\col A,a=_Ax))
+		}{
+			\Gamma\vdash A\type
+		}
+	}
+\end{mathpar}
+\end{proof}
+\section{Axioms}
+\paragraph{Directed path type}
+\footnotesize\begin{mathpar}
+	\inferH{DpIntr}{
+		\Gamma\vdash A\type\\
+		x,y\notin\Var(\Gamma)
+	}{
+		\Gamma,x\col A,y\col A\vdash x\to_A y\type
+		\\
+		\Gamma,x\col A\vdash \id_x\col x\to_A x
+	}
+\end{mathpar}
+\paragraph{$\Delta^2_m$-type}
+\footnotesize\begin{mathpar}
+	\inferH{CompIntr}{
+		\Gamma\vdash A\type\\
+		x,y,z,f,g,h\notin\Var(\Gamma)
+	}{
+		\Gamma,x\col A,y\col A,z\col A,f\col x\to_Ay,g\col y\to_Az,h\col x\to_Az
+		\vdash \Comptype(x)(y)(z){f}{g}{h}\type
+	}
+	\\
+	\inferH{CompLefl}{
+		\Gamma\vdash A\type\\
+		x,y,f\notin\Var(\Gamma)
+	}{
+		\Gamma,x\col A,y\col A,f\col x\to_Ay
+		\vdash\Lefl_f\col\Comptype(x)(y)(y){f}{\id_y}{f}
+	}
+	\hspace{2ex}
+	\inferH{CompRefl}{
+		\Gamma\vdash A\type\\
+		x,y,f\notin\Var(\Gamma)
+	}{
+		\Gamma,x\col A,y\col A,f\col x\to_Ay
+		\vdash\Refl_f\col\Comptype(x)(x)(y){\id_x}{f}{f}
+	}
+\end{mathpar}
+\paragraph{Excisions}
+\footnotesize\begin{mathpar}
+	\inferH{StrongExcision}{
+		\Gamma\vdash A\type
+		\\
+		x,y,x',y',f,f'\notin\Var(\Gamma)
+	}{
+		\Gamma,x,y,x',y'\col A,\\\\
+		f\col x\to y,f'\col x'\to y',\\\\
+		p\col \langle x,y,f\rangle\to_{\Sigma(x,y\col A,x\to_Ay)}\langle x',y',f'\rangle
+		\\\\
+		\vdash
+		\langle\dom(p),\cod(p),\diag(p)\rangle\col (x\to x')\times (y\to y')\times (x\to y')
+		\\\\
+		\langle\exdom(p),\excod(p)\rangle \col
+		\Comptype(x)(x')(y'){\dom(p)}{f'}{\diag(p)}
+		\times
+		\Comptype(x)(y)(y'){f}{\cod(p)}{\diag(p)}
+	}
+	\hspace{2ex}
+	\inferH{StrongExcision2}{
+		\Gamma\vdash A\type
+		\\
+		x,y,x',y',f,f'\notin\Var(\Gamma)
+	}{
+		\Gamma,x,y,x',y'\col A,\\\\
+		f\col x\to y,f'\col x'\to y',\\\\
+		d\col (x\to x'),
+		c\col (y\to y'),
+		\delta\col (x\to y'),
+		\\\\
+		ed\col
+		\Comptype(x)(x')(y'){d}{f'}{\delta}
+		,
+		ec \col
+		\Comptype(x)(y)(y'){f}{c}{\delta}
+		\\\\
+		\vdash
+		\sqr(d,c,\delta,ed,ec)\col \langle x,y,f\rangle\to_{\Sigma(x,y\col A,x\to_Ay)}\langle x',y',f'\rangle
+	}
+\end{mathpar}
+\section{test}
+\begin{definition}
+	\footnotesize\begin{mathpar}
+	\inferH{subty tuple}{
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_0 \leq T'_0 \\\\
+		\mathbf{A} \vdash T_1 \leq T'_1
+	}{
+		\mathbf{A} \vdash T_0 \times T_1 \leq T'_0 \times T'_1
+	}
+	\end{mathpar}
+\end{definition}
+
+
+
+\printbibliography
+\end{document}

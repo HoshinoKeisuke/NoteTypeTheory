@@ -1,0 +1,425 @@
+\ProvidesPackage{preamble}
+\RequirePackage{%
+mathtools,%
+subfiles,%
+bbm,%
+titlecaps,%
+tikz-cd,%
+amssymb,%
+amsmath,%
+amsthm,%
+thmtools,%
+amssymb,%
+graphics,%
+ascmac,%
+import,%
+mathrsfs,%
+paralist,%
+esint,%
+stmaryrd,%
+array,%
+pict2e,
+listings, % for listings
+proof,
+}
+\RequirePackage{comment}
+\RequirePackage{acro}
+%\RequirePackage[nolist,smaller]{acronym}
+\RequirePackage[a4paper, margin=2cm]{%
+geometry%
+}
+\RequirePackage[colorlinks]{%
+hyperref,%
+}
+\RequirePackage[nameinlink]{%
+cleveref,%
+}
+\RequirePackage[T1]{%
+fontenc,%
+}
+\RequirePackage[utf8]{%
+inputenc,%
+}
+\usetikzlibrary{%
+fit,% table style
+decorations.markings,% to define the key vslash
+decorations.pathmorphing,%
+}
+\RequirePackage[%
+    backend=biber,%
+    style=alphabetic,%
+    sorting=nyt,%
+    giveninits=true,%first name„Çíinitial„ÅßÁúÅÁï•
+    backref=true,%
+    isbn=false,%
+    url=true,%
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+% yo!
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand*\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
+
+% \emph setting
+% \renewcommand*{\emph}[1]{\textbf{\textit{#1}}}
+
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=RoyalPurple,
+    filecolor=RedViolet,
+    urlcolor=OliveGreen,
+}
+
+%title
+\title{%
+{Note on type theories}%
+}
+\date{\today}
+%\author{Keisuke Hoshino}
+%\email{hoshinok@kurims.kyoto-u.ac.jp}
+%\thanks{%
+%}
+% I am particularly grateful for the feedback offered by Dr.\ S.\ Fujii.}
+%	The first author is partially supported by JSPS Research Fellowship for Young Scientists.
+%	The authors would like to express their gratitude to their supervisor, Masahito Hasegawa, for his guidance and support.
+%	They would like to extend their special thanks to Yuto Kawase, who provided valuable corrections and advice throughout the research process.
+%	They are grateful for the feedback offered by Hisashi Aratake, Soichiro Fujii, and Kengo Hirata.
+%	They would also like to thank the participants of the Australian Category Seminar for many helpful comments.
+%	In particular, they thanks Ross Street and Stephen Lack for their suggestions on related research.
+%\address{Research Institute of Mathematical Science, Kyoto University}
+
+%\keywords{}
+%\subjclass[2020]{%
+%	18B10, % Categories of spans/cospans, relations, or partial maps
+%	18E08, % Regular categories, Barr-exact categories
+%	18N10, % 2-categories, bicategories, double categories
+%	18A32, % Factorization systems, substructures, quotient structures, congruences, amalgams
+%} %18A20 epi morphism
+
+%set the number of equations within section
+%\numberwithin{equation}{section}
+
+
+\renewcommand*{\theenumi}{\roman{enumi}}
+\renewcommand*{\labelenumi}{{\theenumi})\,}
+\crefname{enumi}{\!}{Items\!}
+\Crefname{enumi}{\!}{Items\!}
+%theoremstyles
+\newtheoremstyle{since}% name
+  {1pt}%      Space above
+  {3pt}%      Space below
+  {\addtolength{\leftskip}{.5em}}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {}% Thm head font \itshape for italic, bfshape for bf
+  {}%        Punctuation after thm head (usually .)
+  {.5em}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{claim}% name
+  {3pt}%      Space above, empty = `usual value'
+  {1pt}%      Space below
+  {\addtolength{\leftskip}{.5em}}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\ttfamily}%         Thm head font \bfseries nado
+  {.}%        Punctuation after thm head
+  {.5em}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+
+\newcommand*{\noqed}{\let\qed\relax}
+
+\declaretheorem[style=definition,qed=$\blacklozenge$,numbered=no,name=Theorem]{theorem*}
+%\declaretheorem[style=definition,name=Theorem]{theorem}
+\declaretheorem[style=definition,qed=$\blacklozenge$,numberwithin=section,name=Theorem]{theorem}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Lemma]{lemma}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Proposition]{proposition}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Corollary]{corollary}
+\declaretheorem[style=definition,qed=$\blacklozenge$,sibling=theorem,name=Fact]{fact}
+
+\declaretheorem[style=since,numbered=no,qed=$\lozenge$,name=$\because$]{since}
+\declaretheorem[style=claim,name=\,\underline{Claim},numbered=no]{claim}
+
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Definition]{definition}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Conjecture]{conjecture}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Example]{example}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Exercise]{exercise}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Remark]{remark}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Notation]{notation}
+\declaretheorem[style=definition,qed=$\blacksquare$,sibling=theorem,name=Observation]{observation}
+
+
+\crefname{theorem}{Theorem\!}{Theorems\!}
+\Crefname{theorem}{Theorem\!}{Theorems\!}
+
+\crefname{section}{Section\!}{Sections\!}
+\Crefname{section}{Section\!}{Sections\!}
+\crefname{definition}{Definition\!}{Definitions\!}
+\Crefname{definition}{Definition\!}{Definitions\!}
+\crefname{notation}{Notation\!}{Notations\!}
+\Crefname{notation}{Notation\!}{Notations\!}
+\crefname{example}{Example\!}{Examples\!}
+\Crefname{example}{Example\!}{Examples\!}
+\crefname{remark}{Remark\!}{Remarks\!}
+\Crefname{remark}{Remark\!}{Remarks\!}
+\crefname{equation}{}{}
+\Crefname{equation}{}{}
+
+\crefname{corollary}{Corollary\!}{Corollary\!}
+\Crefname{corollary}{Corollary\!}{Corollary\!}
+\crefname{proposition}{Proposition\!}{Propositions\!}
+\Crefname{proposition}{Proposition\!}{Propositions\!}
+\crefname{lemma}{Lemma\!}{Lemmas\!}
+\Crefname{lemma}{Lemma\!}{Lemmas\!}
+\crefname{fact}{Fact\!}{Facts\!}
+\Crefname{fact}{Fact\!}{Facts\!}
+
+\crefname{tabular}{Table\!}{Tables\!}
+\Crefname{tabular}{Table\!}{Tables\!}
+\crefname{table}{Table\!}{Tables\!}
+\Crefname{table}{Table\!}{Tables\!}
+
+
+%comments
+\newcommand*{\inred}[1]{{\color{Magenta} #1}}
+
+%define colimit
+\newcommand*{\colim}{\operatorname*{colim}}
+
+% vslash
+\tikzstyle{vslash} = [decoration={markings, mark=at position 0.5 with {\draw[-,solid] (0,-1.5pt) -- (0,1.5pt);}}, postaction ={decorate}]
+\tikzstyle{vslashslash} = [decoration={markings, mark=at position 0.5 with {\draw[-] (0.2pt,-1.5pt) -- (0.2pt,1.5pt);\draw[-] (-0.2pt,-1.5pt) -- (-0.2pt,1.5pt);}}, postaction ={decorate}]
+% path of horizontal arrows
+\tikzcdset{
+path/.code = {\tikzcdset{dashed};},
+phan/.code = {\tikzcdset{dotted};},
+}
+\newcommand*{\har}[1][]{%
+    \ar[vslash,
+        #1,
+        ]
+}
+\newcommand*{\harrow}[1][]{\arrow[vslash,#1]}
+\newcommand*{\hpath}[1][]{%
+  \ar[vslash,%
+    path,%
+    #1,%
+    ]
+}
+\newcommand*{\hphan}[1][]{\arrow[vslash,phan,#1]}
+
+% Tikz style for the commutative diagrams.
+\tikzstyle{tri} = [row sep={1.6em}, column sep={0.8em}]
+\tikzstyle{tiny} = [row sep={1.0em}, column sep={1.2em}]
+\tikzstyle{tinytri} = [row sep={0.8em}, column sep={0.1em}]
+% identity
+\tikzcdset{equal/.append style={double distance=1.0pt,-}}
+
+% change arrow style
+\tikzcdset{%
+    arrow style=tikz,
+    diagrams={>={Straight Barb[scale=0.8]}}
+}
+% doublecell in tikzcd
+\newcommand*{\doublecell}[2][rd]{%
+    \ar[
+        #1,
+        phantom, "#2",
+        start anchor={[xshift=0ex, yshift=0ex]center},
+        end anchor={[xshift=0ex, yshift=0ex]center},
+        ]
+}
+%pullback in tikzcd
+\newcommand*{\pullbackA}[1][rd]{%
+    \doublecell[#1, "\mbox{\rotatebox[origin=c]{45}{$\lrcorner$}}"{marking, near start}]{}
+}
+\newcommand*{\pullback}[1][rd]{%
+    \doublecell[#1, "\lrcorner"{description, near start, inner sep=0mm}]{}
+}
+% sar in tikzcd
+\newcommand*{\sar}[1][]{%
+    \ar[vslash,
+        #1,
+        ]
+}
+%\sal in tikzcd
+\newcommand*{\sal}[1][]{%
+    \sar[leftarrow,
+        #1,
+        ]
+}
+%\al in tikzcd
+\newcommand*{\al}[1][]{%
+    \ar[leftarrow,
+        #1,
+        ]
+}
+% for rotatebox macro
+\newcommand*\myrot[2]{\mathrel{\rotatebox[origin=c]{#1}{$#2$}}}
+%\newcommand*\myrotiso[1]{\mathrel{\rotatebox[origin=c]{#1}{$\cong$}}}
+% create four new angled double-struck arrows
+\newcommand*\NEarrow{\myrot{45}{\Rightarrow}}
+\newcommand*\NWarrow{\myrot{135}{\Rightarrow}}
+\newcommand*\SWarrow{\myrot{-135}{\Rightarrow}}
+\newcommand*\SEarrow{\myrot{-45}{\Rightarrow}}
+\newcommand*\NEcong{\myrot{45}{\cong}}
+\newcommand*\SWcong{\myrot{-135}{\cong}}
+
+
+% opposite for colon
+\newcommand*\lon{%
+        \nobreak
+        \mskip6mu plus1mu
+        \mathpunct{}%
+        \nonscript
+        \mkern-\thinmuskip
+        {:}%
+        \mskip2mu
+        \relax
+}
+
+% tikz in table style
+\newcommand\addvmargin[1]{
+  \node[fit=(current bounding box),inner ysep=#1,inner xsep=0]{};
+}
+
+%basics
+\NewDocumentCommand{\arr}{D""{} O{} O{1.3}}{\mathrel{
+    \begin{tikzcd}[column sep={#3em}, ampersand replacement=\&, every label/.append style={font=\small}]
+        \hspace{-2ex}\ar[r, "{#1}", #2] \& \hspace{-2ex}
+    \end{tikzcd}
+}}
+\NewDocumentCommand{\rra}{D""{} O{} O{1.3}}{\mathrel{
+    \begin{tikzcd}[column sep={#3em}, ampersand replacement=\&, every label/.append style={font=\small}]
+        \hspace{-2ex} \& \hspace{-2ex}\ar[l, "{#1}"', #2]
+    \end{tikzcd}
+}}
+
+\NewDocumentCommand{\harr}{D""{} O{} O{1.3}}{\mathrel{
+    \begin{tikzcd}[column sep={#3em}, ampersand replacement=\&, every label/.append style={font=\small}]
+        \hspace{-2ex}\ar[r,vslash,"{#1}",#2] \& \hspace{-2ex}
+    \end{tikzcd}
+}}
+\NewDocumentCommand{\adjunction}{D(){\perp} O{1} m m m m }{
+    \begin{tikzcd}[column sep={#2em},ampersand replacement=\&]
+        {#3}\ar[rr,"{#5}",shift left=5pt,bend left=10] \& {#1} \& {#4}\ar[ll,"{#6}",shift left=5pt,bend left=10]
+    \end{tikzcd}
+}
+
+
+\newcommand*{\Set}{\one{Set}}
+\newcommand*{\SET}{\one{SET}}
+\newcommand*{\Catone}{{\one{Cat}}}
+\newcommand*{\Catbi}{{\bi{C}{at}}}
+\newcommand*{\CATone}{{\one{CAT}}}
+\newcommand*{\CATbi}{\bi{CAT}}
+\newcommand*{\twoCATbi}{2\myphen\bi{CAT}}
+\newcommand*{\mrin}{\mathrm{\ in\ }}
+\mathchardef\mhyphen="2D % Define a "math hyphen"
+\newcommand*{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand*{\vertcong}{\rotatebox{270}{$\cong\,$}}
+\newcommand*{\defarrow}{\begin{tikzcd}[cramped, sep=small, ampersand replacement=\&] \  \arrow[r, Leftrightarrow, "\mathrm{def}"] \& \  \end{tikzcd}}
+\newcommand*{\id}{\mathtt{id}}
+\newcommand*{\Id}{\mathtt{Id}}
+\newcommand*{\btk}{\!\!\begin{tikzcd}[column sep=small]}
+\newcommand*{\etk}{\end{tikzcd}\!\!}
+\newcommand*{\mmbox}[1]{\mbox{$#1$}}
+\newcommand*{\mmboxsmall}[1]{\mbox{\small $#1$}}
+\newcommand*{\mmboxfootnotesize}[1]{\mbox{\footnotesize $#1$}}
+\newcommand*{\mmboxscriptsize}[1]{\mbox{\scriptsize $#1$}}
+\newcommand*{\mmboxtiny}[1]{\mbox{\tiny $#1$}}
+\newcommand*{\op}{\mathtt{op}}
+\newcommand*{\co}{\mathtt{co}}
+\newcommand*{\hop}{\mathtt{hop}}
+\newcommand*{\vop}{\mathtt{vop}}
+\newcommand*{\dom}{\mathtt{dom}}
+\newcommand*{\cod}{\mathtt{cod}}
+\newcommand*{\abs}[1]{{\lvert #1\rvert}}
+\newcommand*{\oneabs}[1]{{\lvert\!\lvert #1\rvert\!\rvert}}
+\newcommand*{\Obj}{\zero{Obj}}
+
+\newcommand*{\dgm}[1]{\mathbbm{#1}}
+\newcommand*{\zero}[1]{\mathsf{#1}}
+\newcommand*{\one}[1]{\mathbf{#1}}
+\newcommand*{\bi}[1]{{\mathcal{#1}}}
+\newcommand*{\dbl}[1]{\mathbb{#1}}
+%\newcommand*{\trpl}[1]{\mathfrak{#1}}
+
+\newcommand*{\boundary}{\partial}
+
+%\makeatletter
+%\DeclareRobustCommand{\Simp}{{\mathpalette\bb@Delta\relax}}
+%\newcommand{\bb@Delta}[2]{%
+%  \begingroup
+%  \sbox\z@{$\m@th#1\Delta$}%
+%  \dimendef\Dht=6 \dimendef\Dwd=8
+%  \setlength{\Dwd}{\wd\z@}%
+%  \setlength{\Dht}{\ht\z@}%
+%  \begin{picture}(\Dwd,\Dht)
+%  \put(0,0){$\m@th#1\Delta$}
+%  \put(.42\Dwd,.7\Dht){\line(10,-26){.25\Dht}}
+%  \end{picture}%
+%  \endgroup
+%}
+%\makeatother
+% cellsymb in tikzcd
+\NewDocumentCommand{\cellsymb}{D(){} O{} m m}{
+    \arrow[from=#3,to=#4,phantom,"{#1}"{#2}]
+}
+\newcommand{\incat}[1]{\hspace{1em}\text{in }{#1}}
+\newcommand{\tup}[1]{\vec{#1}}
+%----- acronyms (additional) -----------------------------------------------
+\DeclareAcronym{nvdc}{% 
+    short = \textsc{nvdc},%
+    short-plural-form= \textsc{nvdc}s,%
+    long = normal virtual double category,
+    long-plural-form = normal virtual double categories,%
+    short-indefinite = an,%
+    long-indefinite = a,%
+}
+\DeclareAcronym{pRMC}{% 
+    short = p\textsc{rmc},%
+    short-plural-form= p\textsc{rmc}s,%
+    long = pre-representable map category,
+    long-plural-form = pre-representable map categories,%
+    short-indefinite = a,%
+    long-indefinite = a,%
+}
+%----- abbreviations (additional) -----------------------------------------------
+\newcommand*{\Var}{\mathrm{Var}}
+\newcommand*{\cxt}{\hspace{0.1ex}\mathrm{cxt}}
+\newcommand*{\J}{\hspace{0.1ex}\mathscr{J}}
+\newcommand*{\type}{\hspace{1.3ex}\mathrm{type}}
+\newcommand*{\mtype}{\hspace{1.3ex}\mathrm{mtype}}
+\newcommand*{\col}{:}
+\DeclareMathOperator{\exdom}{\mathtt{exd}}
+\DeclareMathOperator{\excod}{\mathtt{exc}}
+\DeclareMathOperator{\prl}{\mathtt{prl}}
+\DeclareMathOperator{\prr}{\mathtt{prr}}
+\DeclareMathOperator{\app}{\mathtt{app}}
+\DeclareMathOperator{\refl}{\mathtt{refl}}
+\DeclareMathOperator{\Lefl}{\mathtt{Lefl}}
+\DeclareMathOperator{\Refl}{\mathtt{Refl}}
+\DeclareMathOperator{\rec}{\mathtt{rec}}
+\DeclareMathOperator{\iscontr}{\mathtt{is\mhyphen contr}}
+\DeclareMathOperator{\diag}{\mathtt{diag}}
+\DeclareMathOperator{\sqr}{\mathtt{square}}
+\NewDocumentCommand{\Comptype}{D(){\cdot} D(){\cdot} D(){\cdot} m m m}{
+  \begin{tikzcd}[row sep=1ex,column sep=1ex,ampersand replacement=\&]
+      \&
+      {#2}
+      \ar[rd,"{#5}"]
+        \&
+    \\
+    {#1}
+    \ar[ru,"{#4}"]
+    \ar[rr,"{#6}"']
+    \ar[rr,phantom,"{\mbox{\tiny$\verteq$}}"{above=-0.6}]
+      \&
+        \&
+        {#3}
+  \end{tikzcd}
+}
+\endinput
